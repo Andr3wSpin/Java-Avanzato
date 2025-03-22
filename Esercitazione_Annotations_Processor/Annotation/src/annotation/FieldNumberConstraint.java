@@ -6,8 +6,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.SOURCE)
+
 @Target(ElementType.TYPE)
+@Retention(RetentionPolicy.CLASS)
+
 public @interface FieldNumberConstraint {
 
     int value();
