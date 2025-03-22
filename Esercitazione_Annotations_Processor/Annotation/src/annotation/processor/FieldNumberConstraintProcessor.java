@@ -4,53 +4,66 @@ import annotation.FieldNumberConstraint;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.*;
-import javax.lang.model.util.Types;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.VariableElement;
 import javax.tools.Diagnostic;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Set;
 
 @SupportedAnnotationTypes("annotation.FieldNumberConstraint")
 @SupportedSourceVersion(SourceVersion.RELEASE_23)
 public class FieldNumberConstraintProcessor extends AbstractProcessor {
 
     private Messager messager;
-    private Element elementUnits;
-    private Types typeUtils;
 
-
-
+    @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        for (Element element : roundEnv.getElementsAnnotatedWith(FieldNumberConstraint.class)) {
-            if (element.getKind() != ElementKind.CLASS) {
-                messager.printMessage(Diagnostic.Kind.ERROR, "@FieldNumberConstraint può essere usata solo su classi!", element);
 
-            }
+        Set<? extends Element> elementiAnnotati = roundEnv.getElementsAnnotatedWith(FieldNumberConstraint.class);
 
-            // Ottieni il valore specificato nell'annotazione
-            FieldNumberConstraint annotation = element.getAnnotation(FieldNumberConstraint.class);
-            int expectedFieldCount = annotation.value();
+        for(Element elemento : elementiAnnotati) {
 
-            // Conta le variabili d'istanza
-            List<VariableElement> fields = element.getEnclosedElements().stream()
-                    .filter(e -> e.getKind() == ElementKind.FIELD)
-                    .map(e -> (VariableElement) e)
-                    .collect(Collectors.toList());
+            if(elemento.getKind() == ElementKind.CLASS) {
 
-            int actualFieldCount = fields.size();
-
-            // Controlla se il numero di campi è corretto
-            if (actualFieldCount != expectedFieldCount) {
-                messager.printMessage(
-                        Diagnostic.Kind.ERROR,
-                        "La classe " + element.getSimpleName() + " ha " + actualFieldCount +
-                                " campi, ma ne sono richiesti esattamente " + expectedFieldCount + ".",
-                        element
-                );
+                verificaClasse((TypeElement) elemento);
             }
         }
-        return true; // Indica che l'annotazione è stata elaborata
+
+        return false;
+    }
+
+    private void verificaClasse(TypeElement classe) {
+
+        FieldNumberConstraint fnc = classe.getAnnotation(FieldNumberConstraint.class);
+
+         List<? extends Element> elementiClasse = classe.getEnclosedElements();
+         List<VariableElement> attributiClasse = new ArrayList<>();
+
+         for(Element elemento : elementiClasse) {
+
+             if(elemento.getKind() == ElementKind.FIELD)
+
+                 attributiClasse.add((VariableElement) elemento);
+         }
+
+         if(elementiClasse.size() != fnc.value())
+
+             stampaErrore(classe, "La classe " + classe.getSimpleName() + " ha più di " + fnc.value() + " attributi");
+    }
+
+    private void stampaErrore(Element classe, String messaggio) {
+
+        messager.printMessage(Diagnostic.Kind.ERROR, messaggio, classe);
+    }
+
+    @Override
+    public void init(ProcessingEnvironment processingEnvironment) {
+
+        super.init(processingEnvironment);
+
+        messager = processingEnvironment.getMessager();
     }
 }
