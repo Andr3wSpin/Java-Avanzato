@@ -1,6 +1,5 @@
 package data;
 
-
 import annotation.AtMostThree;
 import annotation.FieldNumberConstraint;
 
@@ -9,7 +8,7 @@ import annotation.FieldNumberConstraint;
 public class LongClass {
 
     public String var1;
-    public int var2;
+    //public int var2;
 
     public void metodo1(){
         System.out.println("nulla");

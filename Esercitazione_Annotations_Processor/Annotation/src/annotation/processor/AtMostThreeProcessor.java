@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package processor;
+package annotation.processor;
 
-import annotation.FieldNumberConstraint;
 import annotation.AtMostThree;
 import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
@@ -17,20 +16,18 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 
-@SupportedAnnotationTypes({"annotation.AtMostThree","annotation.FieldNumberConstraint"})
-@SupportedSourceVersion(SourceVersion.RELEASE_8)
+@SupportedAnnotationTypes({"annotation.AtMostThree"})
+@SupportedSourceVersion(SourceVersion.RELEASE_23)
 public class AtMostThreeProcessor extends AbstractProcessor {
 
     private Messager messager;
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        // get elements annotated with the @Setter annotation
+
         Set<? extends Element> AtMostThreeClass = roundEnv.getElementsAnnotatedWith(AtMostThree.class);
         for (Element element : AtMostThreeClass) {
             if (element.getKind() == ElementKind.CLASS) {
@@ -38,7 +35,6 @@ public class AtMostThreeProcessor extends AbstractProcessor {
             }
         }
 
-        // don't claim annotations to allow other processors to process them
         return false;
     }
 

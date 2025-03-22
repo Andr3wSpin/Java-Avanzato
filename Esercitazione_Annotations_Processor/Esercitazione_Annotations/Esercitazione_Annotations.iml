@@ -13,7 +13,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../out/artifacts/Annotation_jar/Annotation.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/Annotation.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

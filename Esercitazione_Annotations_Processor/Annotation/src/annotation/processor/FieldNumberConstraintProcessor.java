@@ -1,12 +1,10 @@
-package processor;
+package annotation.processor;
 
 import annotation.FieldNumberConstraint;
 
-import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.*;
-import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 import java.util.Set;
@@ -16,7 +14,7 @@ import java.util.List;
 
 @SupportedAnnotationTypes("annotation.FieldNumberConstraint")
 @SupportedSourceVersion(SourceVersion.RELEASE_23)
-public class FieldNumberConstraintProcessor {
+public class FieldNumberConstraintProcessor extends AbstractProcessor {
 
     private Messager messager;
     private Element elementUnits;

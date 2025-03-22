@@ -3,9 +3,7 @@ package data;
 import annotation.AtMostThree;
 import annotation.FieldNumberConstraint;
 
-
-
-@FieldNumberConstraint()
+@FieldNumberConstraint(1)
 @AtMostThree
 public class ShortClass {
 
