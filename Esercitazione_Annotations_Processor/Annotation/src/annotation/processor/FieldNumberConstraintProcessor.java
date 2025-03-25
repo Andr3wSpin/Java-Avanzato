@@ -7,10 +7,7 @@ import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.TypeElement;
-import javax.lang.model.element.VariableElement;
 import javax.tools.Diagnostic;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @SupportedAnnotationTypes("annotation.FieldNumberConstraint")
@@ -39,17 +36,16 @@ public class FieldNumberConstraintProcessor extends AbstractProcessor {
 
         FieldNumberConstraint fnc = classe.getAnnotation(FieldNumberConstraint.class);
 
-         List<? extends Element> elementiClasse = classe.getEnclosedElements();
-         List<VariableElement> attributiClasse = new ArrayList<>();
+         int fieldCount = 0;
 
-         for(Element elemento : elementiClasse) {
+         for(Element elemento : classe.getEnclosedElements()) {
 
              if(elemento.getKind() == ElementKind.FIELD)
 
-                 attributiClasse.add((VariableElement) elemento);
+                 fieldCount++;
          }
 
-         if(elementiClasse.size() != fnc.value())
+         if(fieldCount != fnc.value())
 
              stampaErrore(classe, "La classe " + classe.getSimpleName() + " ha più di " + fnc.value() + " attributi");
     }

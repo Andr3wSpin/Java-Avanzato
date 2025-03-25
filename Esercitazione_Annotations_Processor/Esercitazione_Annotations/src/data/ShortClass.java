@@ -8,6 +8,7 @@ import annotation.FieldNumberConstraint;
 public class ShortClass {
 
     private int var;
+    private int var2;
 
     public void metodo1(){
         System.out.println("nulla");

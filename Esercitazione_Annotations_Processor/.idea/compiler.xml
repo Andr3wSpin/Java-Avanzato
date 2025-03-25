@@ -2,7 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
+      <profile default="true" name="Default" enabled="true">
+        <option name="Prova" value="annotazioni" />
+        <processor name="annotation.processor.AtMostThreeProcessor" />
+        <processor name="annotation.processor.FieldNumberConstraintProcessor" />
+        <processorPath useClasspath="false" useProcessorModulePath="true">
+          <entry name="$PROJECT_DIR$/out/artifacts/Annotation_jar/Annotation.jar" />
+        </processorPath>
+      </profile>
     </annotationProcessing>
   </component>
 </project>

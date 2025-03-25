@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package annotation.processor;
 
 import annotation.AtMostThree;
+
+import java.util.List;
 import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Messager;
@@ -29,27 +26,28 @@ public class AtMostThreeProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 
         Set<? extends Element> AtMostThreeClass = roundEnv.getElementsAnnotatedWith(AtMostThree.class);
+
         for (Element element : AtMostThreeClass) {
             if (element.getKind() == ElementKind.CLASS) {
-                checkAtMostThree((RoundEnvironment) (TypeElement) element);
+                checkAtMostThree((TypeElement) element);
             }
         }
 
         return false;
     }
 
-    private void checkAtMostThree(RoundEnvironment roundEnv) {
-        int methodCount = 0;  // Contatore per i metodi annotati
+    private void checkAtMostThree(TypeElement classe) {
 
-        for (Element element : roundEnv.getElementsAnnotatedWith(AtMostThree.class)) {
+        int methodCount = 0;
+
+        for (Element element : classe.getEnclosedElements()) {
             if (element.getKind() == ElementKind.METHOD) {
-                methodCount++;  // Incrementa il contatore
+                methodCount++;
             }
         }
 
-        // Se ci sono più di 3 metodi annotati, genera un errore
         if (methodCount > 3) {
-            printError(null, "The class has more than 3 methods annotated with @AtMostThree");
+            printError(classe, "La classe " + classe.getSimpleName() + " ha più di 3 metodi.");
         }
     }
 
@@ -61,7 +59,6 @@ public class AtMostThreeProcessor extends AbstractProcessor {
     public void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
 
-        // get messager for printing errors
         messager = processingEnvironment.getMessager();
     }
 

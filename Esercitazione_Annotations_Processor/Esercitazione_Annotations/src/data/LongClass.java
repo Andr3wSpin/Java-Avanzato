@@ -8,11 +8,9 @@ import annotation.FieldNumberConstraint;
 public class LongClass {
 
     public String var1;
-    //public int var2;
+    public int var2;
 
-    public void metodo1(){
-        System.out.println("nulla");
-    }
+    public void metodo1(){ System.out.println("nulla"); }
 
     public void metodo2(){
         System.out.println("nulla");
