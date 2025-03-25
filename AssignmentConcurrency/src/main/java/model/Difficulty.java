@@ -9,5 +9,13 @@ package model;
  * @author paolo
  */
 public enum Difficulty {
-    
+    EASY(20),MEDIUM(15),HARD(5);
+    private int time;
+    private Difficulty(int time){
+        this.time = time;
+    }
+    //prova push
+    public int getTime(){
+        return this.time;
+    }
 }

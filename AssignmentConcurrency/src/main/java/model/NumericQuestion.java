@@ -15,8 +15,10 @@ public class NumericQuestion {
         this.operator = operator;
     }
     
-    public String getResult() {
+    public int getResult() {
         
-        return 
+        return result;
     }
+    
+    
 }
