@@ -11,7 +11,7 @@ package model;
 public enum Operator {
     ADD('+'),SUB('-'),MUL('*');
     
-    char sign;
+    private char sign;
     
     private Operator(char sign){
         this.sign = sign;
