@@ -8,6 +8,18 @@ package model;
  *
  * @author Utente
  */
-public class Paritia {
+public class Partita {
+    //gestione partita
+    private String Nome;
+    private Difficulty difficolta;
+    private final int numero_Domande=10;
+    
+    
+    public Partita(String nome,Difficulty f){
+    
+        this.Nome=nome;
+        this.difficolta=f;
+    }
+    
     
 }
