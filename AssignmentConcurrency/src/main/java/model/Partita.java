@@ -20,6 +20,16 @@ public class Partita {
         this.Nome=nome;
         this.difficolta=f;
     }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public Difficulty getDifficolta() {
+        return difficolta;
+    }
+    
+    
     
     
 }

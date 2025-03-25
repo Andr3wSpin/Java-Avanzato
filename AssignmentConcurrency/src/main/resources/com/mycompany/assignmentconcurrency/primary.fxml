@@ -36,24 +36,24 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button id="setDifficolta_facileBtn" fx:id="setDifficolta_facileBtn" mnemonicParsing="false" text="facile">
-                     <HBox.margin>
-                        <Insets left="40.0" right="20.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button id="setDifficolta_medioBtn" fx:id="setDifficolta_medioBtn" mnemonicParsing="false" text="medio">
+                  <RadioButton fx:id="difSelezionata_facile" mnemonicParsing="false" text="facile">
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
-                  </Button>
-                  <Button id="setDifficolta_difficileBtn" fx:id="setDifficolta_difficileBtn" mnemonicParsing="false" text="difficile">
+                  </RadioButton>
+                  <RadioButton fx:id="difSelezionata_medio" mnemonicParsing="false" text="medio">
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
-                  </Button>
+                  </RadioButton>
+                  <RadioButton fx:id="difSelezionata_difficile" mnemonicParsing="false" text="difficle">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin>
+                  </RadioButton>
                </children>
             </HBox>
-            <Button id="btnGioca" fx:id="btnGioca" mnemonicParsing="false" text="Gioca">
+            <Button id="btnGioca" fx:id="btnGioca" mnemonicParsing="false" onAction="#creaPartita" text="Gioca">
                <VBox.margin>
                   <Insets left="170.0" top="20.0" />
                </VBox.margin>
