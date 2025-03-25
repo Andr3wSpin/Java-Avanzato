@@ -14,14 +14,14 @@
    <children>
       <VBox alignment="CENTER" layoutX="76.0" layoutY="25.0" prefHeight="350.0" prefWidth="448.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Matematic Quiz">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
             </Text>
             <HBox alignment="CENTER" prefHeight="49.0" prefWidth="448.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome : ">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -29,7 +29,7 @@
                   <TextField id="setNome_field" fx:id="setNome_field" />
                </children>
             </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Difficoltà:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Difficoltà">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -53,11 +53,7 @@
                   </RadioButton>
                </children>
             </HBox>
-            <Button id="btnGioca" fx:id="btnGioca" mnemonicParsing="false" onAction="#creaPartita" text="Gioca">
-               <VBox.margin>
-                  <Insets left="170.0" top="20.0" />
-               </VBox.margin>
-            </Button>
+            <Button mnemonicParsing="false" text="Gioca" />
          </children>
       </VBox>
    </children>
