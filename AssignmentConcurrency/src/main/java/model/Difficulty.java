@@ -14,7 +14,7 @@ public enum Difficulty {
     private Difficulty(int time){
         this.time = time;
     }
-    //prova push
+
     public int getTime(){
         return this.time;
     }
