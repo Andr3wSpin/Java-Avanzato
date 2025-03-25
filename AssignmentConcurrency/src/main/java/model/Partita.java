@@ -21,6 +21,7 @@ public class Partita {
         this.nome=nome;
         this.difficolta=f;
         questions = new ArrayList<>();
+        initQuestion();
     }
     
     public void initQuestion(){
@@ -36,7 +37,7 @@ public class Partita {
                 case 1:
                     questions.add(new NumericQuestion(n1,n2,Operator.SUB));
                 break;
-                case 2://prova push
+                case 2:
                     questions.add(new NumericQuestion(n1,n2,Operator.MUL));
                 break;
             }

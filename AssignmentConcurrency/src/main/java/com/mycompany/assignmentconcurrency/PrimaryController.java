@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 public class PrimaryController {
@@ -12,6 +13,12 @@ public class PrimaryController {
     private TextField setNome_field;
     @FXML
     private Button btnGioca;
+    @FXML
+    private RadioButton difSelezionata_facile;
+    @FXML
+    private RadioButton difSelezionata_medio;
+    @FXML
+    private RadioButton difSelezionata_difficile;
     
     
     @FXML
