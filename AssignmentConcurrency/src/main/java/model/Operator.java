@@ -9,5 +9,12 @@ package model;
  * @author paolo
  */
 public enum Operator {
-    
+    ADD('+'),SUB('-'),MUL('*');
+    char sign;
+    private Operator(char sign){
+        this.sign = sign;
+    }
+    public char getSign(){
+        return sign;
+    }//ciao
 }
