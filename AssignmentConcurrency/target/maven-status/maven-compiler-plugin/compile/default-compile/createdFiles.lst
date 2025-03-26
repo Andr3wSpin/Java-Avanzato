@@ -1,9 +1,13 @@
+com\mycompany\assignmentconcurrency\controller\MPController.class
 model\Operator.class
-com\mycompany\assignmentconcurrency\SecondaryController.class
-module-info.class
 com\mycompany\assignmentconcurrency\PrimaryController.class
+com\mycompany\assignmentconcurrency\TertiaryController.class
 model\NumericQuestion$1.class
 model\NumericQuestion.class
+com\mycompany\assignmentconcurrency\controller\MRController.class
 model\Partita.class
 com\mycompany\assignmentconcurrency\App.class
 model\Difficulty.class
+com\mycompany\assignmentconcurrency\controller\MGController.class
+com\mycompany\assignmentconcurrency\SecondaryController.class
+module-info.class

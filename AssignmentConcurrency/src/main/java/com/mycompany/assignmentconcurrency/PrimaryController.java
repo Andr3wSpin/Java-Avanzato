@@ -25,7 +25,6 @@ public class PrimaryController {
     private RadioButton difSelezionata_medio;
     @FXML
     private RadioButton difSelezionata_difficile;
-<<<<<<< HEAD
     @FXML
     private ToggleGroup selezionaDifficolta;
     @FXML
@@ -33,11 +32,9 @@ public class PrimaryController {
     @FXML
     private Text errorMSG;
     private Difficulty d;
-=======
->>>>>>> e5b11a3e9fa28edf9a8ea5f13d2763f5a26a7de3
+
     
     
-    @FXML
     private void creaPartita(ActionEvent event) {
         
         
@@ -89,8 +86,7 @@ public class PrimaryController {
     }
     
     
-     //da implemnatre controllo sul nome e sulla difficolta selezionata obbligatori
-  
+   
     
     
     
