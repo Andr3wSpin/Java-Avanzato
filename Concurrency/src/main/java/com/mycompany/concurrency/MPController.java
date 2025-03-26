@@ -1,10 +1,10 @@
 package com.mycompany.concurrency;
 
-<<<<<<< HEAD
+
 import java.awt.Rectangle;
-=======
+
 import com.mycompany.concurrency.model.Difficolta;
->>>>>>> 216208854a028fb273c2f4692040810e8abe5604
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -122,28 +122,38 @@ public class MPController implements Initializable {
     @FXML
     private void btnGiocaHover(MouseEvent event) {
    
-        TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
-        textSlide.setFromX(0);
-        textSlide.setToX(180);
-        textSlide.play();
-        
-        FadeTransition  textOpacity;
-        textOpacity = new FadeTransition(Duration.millis(200),text_tastoPLay);
-                textOpacity.setFromValue(1.0);
-                textOpacity.setToValue(0.0);
-                textOpacity.play();
-    
-        TranslateTransition imageSlide = new TranslateTransition(Duration.millis(300),Icona_play);
-        imageSlide.setFromX(0);
-        imageSlide.setToX(45);
-        imageSlide.play();
+        TranslateAnimation(true);
     }
 
     @FXML
     private void btnGiocaHoverOut(MouseEvent event) {
     
-        TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
-        textSlide.setFromX(180);
+          TranslateAnimation(false);
+    }
+
+  public void TranslateAnimation (boolean inOut){
+  
+   if(inOut){
+        
+         TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
+        textSlide.setFromX(0);
+        textSlide.setToX(100);
+        textSlide.play();
+        
+        TranslateTransition imageSlide = new TranslateTransition(Duration.millis(300),Icona_play);
+        imageSlide.setFromX(0);
+        imageSlide.setToX(45);
+        imageSlide.play();
+          FadeTransition  textOpacity;
+        textOpacity = new FadeTransition(Duration.millis(300),text_tastoPLay);
+                textOpacity.setFromValue(1.0);
+                textOpacity.setToValue(0.0);
+                 textOpacity.play();
+  
+  }else{
+     
+      TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
+        textSlide.setFromX(100);
         textSlide.setToX(0);
         textSlide.play();
     
@@ -151,14 +161,12 @@ public class MPController implements Initializable {
         imageSlide.setFromX(45);
         imageSlide.setToX(0);
         imageSlide.play();
-    
-       FadeTransition  textOpacity;
-        textOpacity = new FadeTransition(Duration.millis(200),text_tastoPLay);
+     FadeTransition  textOpacity;
+        textOpacity = new FadeTransition(Duration.millis(300),text_tastoPLay);
                 textOpacity.setFromValue(0.0);
                 textOpacity.setToValue(1.0);
                  textOpacity.play();
-    }
-
-  
+     }          
  
+  }
 }
