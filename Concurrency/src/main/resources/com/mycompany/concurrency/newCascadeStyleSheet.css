@@ -25,8 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .stileBTN{
     
    
-       -fx-background-color: transparent;
-
+    -fx-background-color: transparent;
     -fx-border-color: linear-gradient(to left, #FFD700, #E9967A); 
     -fx-border-width: 2px;
     -fx-border-radius: 20px;
@@ -63,12 +62,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-pref-height: 0;
 }
 
-/* Stile per il radio button SELEZIONATO */
+
 .radio-toggle:selected {
     -fx-background-color: #ff9933;
-    -fx-text-fill: black; /* Testo nero */
-    
+    -fx-text-fill: black; 
 }
 
-
+.dark{
+    
+    -fx-background-color: #121212;
+    
+}
 
