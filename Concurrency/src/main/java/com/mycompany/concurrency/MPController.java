@@ -1,8 +1,11 @@
 package com.mycompany.concurrency;
 
+import java.awt.Rectangle;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -13,8 +16,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class MPController implements Initializable {
 
@@ -34,12 +41,21 @@ public class MPController implements Initializable {
     private RadioButton difSelezionata_difficile;
     @FXML
     private Button btnGioca;
+    @FXML
+    private StackPane StackBtnGioca;
+    @FXML
+    private ImageView Icona_play;
+    @FXML
+    private Text text_tastoPLay;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
         inizializzaRadioButton();
         inizializzaPulsanteGioca();
+        
+         iniziallizzaStack();
+        
     }
     
     private void inizializzaRadioButton() {
@@ -92,4 +108,54 @@ public class MPController implements Initializable {
             break;
        }
     }
+
+ public void  iniziallizzaStack(){
+ 
+ 
+ }
+
+   
+
+    @FXML
+    private void btnGiocaHover(MouseEvent event) {
+   
+        TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
+        textSlide.setFromX(0);
+        textSlide.setToX(180);
+        textSlide.play();
+        
+        FadeTransition  textOpacity;
+        textOpacity = new FadeTransition(Duration.millis(200),text_tastoPLay);
+                textOpacity.setFromValue(1.0);
+                textOpacity.setToValue(0.0);
+                textOpacity.play();
+    
+        TranslateTransition imageSlide = new TranslateTransition(Duration.millis(300),Icona_play);
+        imageSlide.setFromX(0);
+        imageSlide.setToX(45);
+        imageSlide.play();
+    }
+
+    @FXML
+    private void btnGiocaHoverOut(MouseEvent event) {
+    
+        TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
+        textSlide.setFromX(180);
+        textSlide.setToX(0);
+        textSlide.play();
+    
+        TranslateTransition imageSlide = new TranslateTransition(Duration.millis(300),Icona_play);
+        imageSlide.setFromX(45);
+        imageSlide.setToX(0);
+        imageSlide.play();
+    
+       FadeTransition  textOpacity;
+        textOpacity = new FadeTransition(Duration.millis(200),text_tastoPLay);
+                textOpacity.setFromValue(0.0);
+                textOpacity.setToValue(1.0);
+                 textOpacity.play();
+    }
+
+  
+ 
 }

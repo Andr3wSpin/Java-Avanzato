@@ -24,18 +24,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .stileBTN{
     
-   
-    -fx-background-color: transparent;
-    -fx-border-color: linear-gradient(to left, #FFD700, #E9967A); 
+    
+    -fx-background-color: linear-gradient(to right, #FFD700, #E9967A) ;
+    -fx-border-color: none; 
     -fx-border-width: 2px;
+    -fx-background-radius:20px;
     -fx-border-radius: 20px;
-    -fx-padding: 10px 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: linear-gradient(to right, #FFD700, #E9967A); 
    
+    -fx-font-weight: bold;
+    -fx-text-fill: white; 
+    font-size: 24px;
+   -fx-pref-width: 160px; /* Imposta la larghezza fissa */
+    -fx-pref-height: 40px;
     -fx-cursor:hand;
-    
-    
     
 }
 
