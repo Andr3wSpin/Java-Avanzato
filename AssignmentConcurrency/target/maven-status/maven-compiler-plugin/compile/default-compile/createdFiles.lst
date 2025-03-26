@@ -1,0 +1,19 @@
+com\mycompany\assignmentconcurrency\controller\MPController.class
+model\Operator.class
+<<<<<<< HEAD
+com\mycompany\assignmentconcurrency\PrimaryController.class
+com\mycompany\assignmentconcurrency\TertiaryController.class
+=======
+>>>>>>> 98e3278127e7da0b1e434aeb43fa9e1b83c6b0bd
+model\NumericQuestion$1.class
+model\NumericQuestion.class
+com\mycompany\assignmentconcurrency\controller\MRController.class
+model\Partita.class
+com\mycompany\assignmentconcurrency\App.class
+model\Difficulty.class
+com\mycompany\assignmentconcurrency\controller\MGController.class
+<<<<<<< HEAD
+com\mycompany\assignmentconcurrency\SecondaryController.class
+=======
+>>>>>>> 98e3278127e7da0b1e434aeb43fa9e1b83c6b0bd
+module-info.class
