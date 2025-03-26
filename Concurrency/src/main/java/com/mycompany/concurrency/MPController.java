@@ -1,5 +1,6 @@
 package com.mycompany.concurrency;
 
+import com.mycompany.concurrency.model.Difficolta;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -76,19 +77,18 @@ public class MPController implements Initializable {
 
        String difficoltaSelezionata = selezionaDifficolta.getSelectedToggle().getUserData().toString();
        
-       switch(difficoltaSelezionata) {
+       Difficolta difficolta = Difficolta.valueOf(difficoltaSelezionata);
+       
+       switch(difficolta) {
            
-        case "FACILE": 
+        case FACILE: 
             //new Partita();
             break;
-        case "MEDIO":
+        case MEDIO:
             //new Partita();
             break;    
-        case "DIFFICILE":
+        case DIFFICILE:
             //new Partita();
-            break;
-        default:
-            System.out.println("diff: " + difficoltaSelezionata);
             break;
        }
     }
