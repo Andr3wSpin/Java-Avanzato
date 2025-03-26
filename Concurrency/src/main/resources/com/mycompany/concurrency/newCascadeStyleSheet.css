@@ -46,8 +46,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #ff9933; /* Bordo del RadioButton */
     -fx-border-width: 2px;
     -fx-border-radius: 20px;
-    -fx-padding: 10px 20px;
+    -fx-padding: 20px;
     -fx-font-weight: bold;
+    -fx-pref-width: 160px; /* Imposta la larghezza fissa */
+    -fx-pref-height: 40px;
      
 }
 .radio-toggle .radio{
@@ -56,16 +58,54 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-shape: ""; 
     -fx-padding: 0;
     -fx-opacity: 0; 
-    -fx-padding: 0;
-    -fx-margin: 0;
-    -fx-pref-width: 0;
-    -fx-pref-height: 0;
+   
 }
 
-
 .radio-toggle:selected {
-    -fx-background-color: #ff9933;
+     -fx-background-color: #ff9933;
+     -fx-background-radius: 10px 0px 0px 10px;
     -fx-text-fill: black; 
+     -fx-font-weight: bold;
+     -fx-font-size: 15px;
+    -fx-border-color: #ff9933; /* Bordo del RadioButton */
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-padding: 20px;
+    -fx-font-weight: bold;
+}
+
+.radio-toggleR {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ff9933; /* Colore testo */
+    -fx-border-color: #ff9933; /* Bordo del RadioButton */
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-padding: 20px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 160px; /* Imposta la larghezza fissa */
+    -fx-pref-height: 40px;
+     
+}
+.radio-toggleR .radio{
+    
+   -fx-background-color: transparent;
+    -fx-shape: ""; 
+    -fx-padding: 0;
+    -fx-opacity: 0; 
+   
+}
+
+.radio-toggleR:selected {
+     -fx-background-color: #ff9933;
+     -fx-background-radius: 0px 10px 10px 0px;
+    -fx-text-fill: black; 
+     -fx-font-weight: bold;
+     -fx-font-size: 15px;
+    -fx-border-color: #ff9933; /* Bordo del RadioButton */
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-padding: 20px;
+    -fx-font-weight: bold;
 }
 
 .dark{

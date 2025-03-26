@@ -59,7 +59,7 @@
             <Text fx:id="errorMSG" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleziona un livello di difficolta" visible="false" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <RadioButton fx:id="difSelezionata_facile" mnemonicParsing="false" style="-fx-border-radius: 10 0 0 10;" stylesheets="@newCascadeStyleSheet.css" text="FACILE">
+                  <RadioButton fx:id="difSelezionata_facile" maxWidth="-Infinity" mnemonicParsing="false" style="-fx-border-radius: 10 0 0 10; -fx-background-radius: 10 0 0 10;" stylesheets="@newCascadeStyleSheet.css" text="FACILE">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -92,7 +92,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton fx:id="difSelezionata_difficile" mnemonicParsing="false" style="-fx-border-radius: 0 10 10 0;" stylesheets="@newCascadeStyleSheet.css" text="DIFFICILE" toggleGroup="$selezionaDifficolta">
+                  <RadioButton fx:id="difSelezionata_difficile" mnemonicParsing="false" style="-fx-border-radius: 0 10 10 0; -fx-background-radius: 0 10 10 0;" stylesheets="@newCascadeStyleSheet.css" text="DIFFICILE" toggleGroup="$selezionaDifficolta">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -100,8 +100,8 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <styleClass>
-                        <String fx:value="stileRadioD" />
-                        <String fx:value="radio-toggle" />
+                        <String fx:value="radio-toggleR" />
+                        <String fx:value="radio-toggleR" />
                      </styleClass>
                      <cursor>
                         <Cursor fx:constant="HAND" />
