@@ -13,12 +13,13 @@ import java.util.List;
 public class Partita {
     //gestione partita
     private final String nome;
-    private Difficulty difficolta;
+    private Difficolta difficolta;
     private final int numero_Domande=10;
-    List <NumericQuestion> questions;
+    private  List <Domanda> questions;
+   
     
     
-    public Partita(String nome,Difficulty f){
+    public Partita(String nome,Difficolta f){
     
         this.nome=nome;
         this.difficolta=f;
@@ -34,17 +35,21 @@ public class Partita {
             int sign = random.nextInt(3);
             switch(sign){
                 case 0:
-                    questions.add(new NumericQuestion(n1,n2,Operator.ADD));
+                    questions.add(new Domanda(n1,n2,Operazione.SOMMA));
                 break;
                 case 1:
-                    questions.add(new NumericQuestion(n1,n2,Operator.SUB));
+                    questions.add(new Domanda(n1,n2,Operazione.SOTTRAZIONE));
                 break;
                 case 2:
-                    questions.add(new NumericQuestion(n1,n2,Operator.MUL));
+                    questions.add(new Domanda(n1,n2,Operazione.MOLTIPLICAZIONE));
                 break;
             }
            
         }
+    }
+
+    public List<Domanda> getQuestions() {
+        return questions;
     }
     
     

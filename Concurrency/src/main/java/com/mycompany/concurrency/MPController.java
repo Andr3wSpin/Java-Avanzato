@@ -4,6 +4,7 @@ package com.mycompany.concurrency;
 import java.awt.Rectangle;
 
 import com.mycompany.concurrency.model.Difficolta;
+import com.mycompany.concurrency.model.Partita;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,7 +15,10 @@ import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -25,6 +29,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MPController implements Initializable {
@@ -52,6 +57,8 @@ public class MPController implements Initializable {
     @FXML
     private Text text_tastoPLay;
     
+    public  Partita p;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -75,8 +82,17 @@ public class MPController implements Initializable {
     
     @FXML
     private void cambiaSchermata(ActionEvent event) throws IOException{
-        App.setRoot("menuGioco");
+        
         creaPartita();
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("menuGioco.fxml"));
+         Parent root = loader.load(); 
+         MGController mgController = loader.getController();
+         mgController.setP(p); 
+         
+         Stage nuovoStage = new Stage();
+         nuovoStage.setScene(new Scene(root));
+         nuovoStage.show();
+      
     }
 
     private void inizializzaPulsanteGioca() {
@@ -102,12 +118,15 @@ public class MPController implements Initializable {
            
         case FACILE: 
             //new Partita();
+          p =  new Partita(setNome_field.getText(),difficolta);
             break;
         case MEDIO:
             //new Partita();
+              p =  new Partita(setNome_field.getText(),difficolta);
             break;    
         case DIFFICILE:
             //new Partita();
+              p =  new Partita(setNome_field.getText(),difficolta);
             break;
        }
     }

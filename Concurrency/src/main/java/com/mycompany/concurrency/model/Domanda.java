@@ -5,7 +5,7 @@ public class Domanda {
     private int num1, num2;
     private Operazione operazione;
     private int risultato;
-    private int risposta;
+    private String risposta;
     
     public Domanda(int num1, int num2, Operazione operazione) {
         
@@ -32,9 +32,10 @@ public class Domanda {
         }
     }
     
-    public void setRisposta(int risposta) { this.risposta = risposta; }
+    public void setRisposta(String risposta) { this.risposta = risposta; }
     
-    public int getRisposta() { return risposta; }
+    
+    public String getRisposta() { return risposta; }
     
     public int getRisultato() { return risultato; }
     
@@ -44,6 +45,6 @@ public class Domanda {
     @Override
     public String toString() {
         
-        return num1 + " " + num2 + " " + operazione.getSegno() + " = ";
+        return num1 + " " +  operazione.getSegno() + " " + num2+ " = " ;
     }
 }
