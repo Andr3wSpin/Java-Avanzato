@@ -30,11 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: 2px;
     -fx-background-radius:20px;
     -fx-border-radius: 20px;
-   
-    -fx-font-weight: bold;
-    -fx-text-fill: white; 
-    font-size: 24px;
-   -fx-pref-width: 160px; /* Imposta la larghezza fissa */
+   -fx-pref-width: 130px; 
     -fx-pref-height: 40px;
     -fx-cursor:hand;
     
