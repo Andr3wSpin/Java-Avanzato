@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.concurrency;
 
+import com.mycompany.concurrency.export.FileManager;
 import com.mycompany.concurrency.model.Domanda;
 import com.mycompany.concurrency.model.Partita;
+import java.io.File;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 
 public class MRController {
@@ -50,6 +51,14 @@ public class MRController {
     @FXML
     private void esportaEsito() {
         
+        Stage stage = (Stage) btnEsporta.getScene().getWindow();
+        
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showSaveDialog(stage);
+
+        if(file == null) return;
+        
+        FileManager.esportaFile(file, partita.getDomande());
     }
 
     private void inizializzaTabella() {
@@ -71,6 +80,7 @@ public class MRController {
 
     private void inizializzaEtichetta() {
 
-        etichetta.setText(partita.getNomeGiocatore() + ", esporta l'esito della tua partita \ne condivilo con i tuoi amici.");
+        etichetta.setText("Gentile " + partita.getNomeGiocatore() + ", grazie per aver giocato al quiz.\n"
+                + " Salva il file con l'esito e condivido con i tuoi amici.");
     }
 }
