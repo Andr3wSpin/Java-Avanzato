@@ -79,6 +79,8 @@ public class MGController {
         } 
         else {
          
+            timeline.stop();
+            
             LBLDomanda.setText("Finish!");
             
             LBLRestanti.setVisible(false);
@@ -132,7 +134,7 @@ public class MGController {
     
     private void cambiaSchermata() {
      
-        try {
+        try {  
             FXMLLoader loader = new FXMLLoader(MRController.class.getResource("menuRisultato.fxml"));
             Scene scena = new Scene(loader.load(), 640, 480);
         
