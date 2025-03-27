@@ -96,12 +96,12 @@ public class MGController {
             double offsetAttuale = timerGrafico.getStrokeDashOffset();
             aggiornaTimer();
             timerGrafico.setStrokeDashOffset(offsetAttuale+(circ / (secondi)));
-              if(offsetAttuale >=circ) offsetAttuale=circ;
+              
                 }));
         
         timeline.setCycleCount(secondi+1);
         
-        timeline.setOnFinished(e -> { setDomanda(); });
+        timeline.setOnFinished(e -> { avanza(); });
         
         timeline.play();
     }
