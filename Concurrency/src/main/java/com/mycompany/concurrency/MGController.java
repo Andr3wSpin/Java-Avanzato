@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -43,7 +44,10 @@ public class MGController {
     private int indiceDomanda = 0;
     private int tempo;
     private Timeline timeline;
+    @FXML
+    private Circle timerGrafico;
     
+    private final double circ = 2*Math.PI*68;    
     public void setPartita(Partita partita) {
         
         this.partita = partita;
@@ -62,7 +66,8 @@ public class MGController {
           LBLRestanti.setText((indiceDomanda + 1) + "/" + domande.size());
           
           TXFRisposta.setText("");
-          
+          timerGrafico.getStrokeDashArray().addAll(circ);
+          timerGrafico.setStrokeDashOffset(0);
           if(timeline != null) timeline.stop();
           
           tempo = partita.getTempo();
@@ -86,18 +91,23 @@ public class MGController {
         int secondi = partita.getTempo();
         
         timeline = new Timeline(new KeyFrame(
-        Duration.seconds(1), e -> aggiornaTimer()));
+        Duration.seconds(1), e -> {
+            double offsetAttuale = timerGrafico.getStrokeDashOffset();
+            aggiornaTimer();
+            timerGrafico.setStrokeDashOffset(offsetAttuale+(circ / (secondi)));
+              if(offsetAttuale >=circ) offsetAttuale=circ;
+                }));
         
-        timeline.setCycleCount(partita.getTempo());
+        timeline.setCycleCount(secondi+1);
         
-        timeline.setOnFinished(e -> { TXFRisposta.setText(""); setDomanda(); });
+        timeline.setOnFinished(e -> { setDomanda(); });
         
         timeline.play();
     }
     
     private void aggiornaTimer() {
         
-        if (tempo > 0) {
+        if (tempo >= 0) {
             
             LBLTempo.setText(tempo + ""); 
             

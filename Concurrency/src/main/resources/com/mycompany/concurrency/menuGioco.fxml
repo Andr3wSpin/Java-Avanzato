@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -23,9 +24,10 @@
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Button>
-      <Label fx:id="LBLTempo" layoutX="128.0" layoutY="250.0" prefHeight="37.0" prefWidth="109.0" text="Tempo">
+      <Label fx:id="LBLTempo" alignment="CENTER" layoutX="128.0" layoutY="250.0" prefHeight="37.0" prefWidth="109.0" text="Tempo">
          <font>
             <Font name="System Bold" size="30.0" />
          </font></Label>
+      <Circle fx:id="timerGrafico" fill="#1f93ff00" layoutX="183.0" layoutY="273.0" radius="68.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" />
    </children>
 </AnchorPane>
