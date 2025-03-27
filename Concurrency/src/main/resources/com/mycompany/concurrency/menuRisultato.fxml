@@ -15,6 +15,6 @@
         </columns>
       </TableView>
       <Button fx:id="btnEsporta" layoutX="266.0" layoutY="423.0" mnemonicParsing="false" onAction="#esportaEsito" text="Esporta" />
-      <Label fx:id="etichetta" alignment="CENTER" layoutX="149.0" layoutY="356.0" prefHeight="65.0" prefWidth="306.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="etichetta" alignment="CENTER" layoutX="104.0" layoutY="356.0" prefHeight="65.0" prefWidth="400.0" text="Label" textAlignment="CENTER" />
    </children>
 </AnchorPane>
