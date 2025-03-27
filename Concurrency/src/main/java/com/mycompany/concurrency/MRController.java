@@ -4,10 +4,16 @@
  */
 package com.mycompany.concurrency;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
+
 /**
  *
  * @author andre
  */
 public class MRController {
+
+    @FXML
+    private TableView<?> TBLEsiti;
     
 }

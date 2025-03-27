@@ -34,7 +34,6 @@ public class Domanda {
     
     public void setRisposta(String risposta) { this.risposta = risposta; }
     
-    
     public String getRisposta() { return risposta; }
     
     public int getRisultato() { return risultato; }

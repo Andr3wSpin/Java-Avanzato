@@ -84,14 +84,15 @@ public class MPController implements Initializable {
     private void cambiaSchermata(ActionEvent event) throws IOException{
         
         creaPartita();
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("menuGioco.fxml"));
-         Parent root = loader.load(); 
-         MGController mgController = loader.getController();
-         mgController.setP(p); 
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("menuGioco.fxml"));
+        Parent root = loader.load(); 
+        MGController mgController = loader.getController();
+        mgController.setP(p); 
          
-         Stage nuovoStage = new Stage();
-         nuovoStage.setScene(new Scene(root));
-         nuovoStage.show();
+        Stage nuovoStage = new Stage();
+        nuovoStage.setScene(new Scene(root));
+        nuovoStage.show();
       
     }
 
@@ -117,7 +118,6 @@ public class MPController implements Initializable {
        switch(difficolta) {
            
         case FACILE: 
-            //new Partita();
           p =  new Partita(setNome_field.getText(),difficolta);
             break;
         case MEDIO:
