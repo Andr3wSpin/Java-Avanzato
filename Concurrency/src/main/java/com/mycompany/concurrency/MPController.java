@@ -83,13 +83,14 @@ public class MPController implements Initializable {
         creaPartita();
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("menuGioco.fxml"));
-        Parent root = loader.load(); 
+        Scene scena = new Scene(loader.load(), 640, 480);
+        
         MGController mgController = loader.getController();
-        mgController.setPartita(p); 
-         
-        Stage nuovoStage = new Stage();
-        nuovoStage.setScene(new Scene(root));
-        nuovoStage.show(); 
+        mgController.setPartita(p);
+        
+        Stage stage = (Stage) btnGioca.getScene().getWindow();
+        
+        stage.setScene(scena);
     }
 
     private void inizializzaPulsanteGioca() {

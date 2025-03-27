@@ -10,4 +10,6 @@ public enum Difficolta {
     
         this.tempo = tempo;
     }
+    
+    public int getTempo() { return tempo; }
 }

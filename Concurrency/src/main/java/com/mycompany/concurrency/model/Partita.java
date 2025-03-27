@@ -42,7 +42,7 @@ public class Partita {
         }
     }
 
-    public List<Domanda> getDomande() {
-        return domande;
-    }
+    public List<Domanda> getDomande() { return domande; }
+    
+    public int getTempo() { return difficolta.getTempo(); }
 }
