@@ -2,7 +2,7 @@ package com.mycompany.concurrency.model;
 
 public enum Difficolta {
     
-    FACILE(20), MEDIO(15), DIFFICILE(5);
+    FACILE(20), MEDIO(15), DIFFICILE(10);
         
     private int tempo;
     

@@ -6,14 +6,14 @@ import java.util.List;
 
 public class Partita {
     //gestione partita
-    private final String nome;
+    private final String nomeGiocatore;
     private Difficolta difficolta;
     private final int NUMERO_DOMANDE = 10;
     private  List<Domanda> domande;
    
-    public Partita(String nome,Difficolta difficolta){
+    public Partita(String nomeGiocatore,Difficolta difficolta){
     
-        this.nome = nome;
+        this.nomeGiocatore = nomeGiocatore;
         this.difficolta = difficolta;
         domande = new ArrayList<>();
         creaDomande();
@@ -42,6 +42,8 @@ public class Partita {
         }
     }
 
+    public String getNomeGiocatore() { return nomeGiocatore; }
+    
     public List<Domanda> getDomande() { return domande; }
     
     public int getTempo() { return difficolta.getTempo(); }

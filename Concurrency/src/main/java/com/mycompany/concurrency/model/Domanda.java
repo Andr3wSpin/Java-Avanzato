@@ -32,7 +32,20 @@ public class Domanda {
         }
     }
     
-    public void setRisposta(String risposta) { this.risposta = risposta; }
+    public boolean isCorrect() {
+        
+        if(risposta.isEmpty()) return false;
+        
+        int r = Integer.parseInt(risposta);
+        
+        return r == risultato;
+    }
+    
+    public void setRisposta(String risposta) { 
+        
+        if(risposta.isEmpty() || !risposta.matches("-?[0-9]+")) this.risposta = "";
+        else this.risposta = risposta;
+    }
     
     public String getRisposta() { return risposta; }
     
@@ -41,6 +54,6 @@ public class Domanda {
     @Override
     public String toString() {
         
-        return num1 + " " +  operazione.getSegno() + " " + num2+ " = " ;
+        return num1 + " " +  operazione.getSegno() + " " + num2;
     }
 }

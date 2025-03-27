@@ -5,6 +5,7 @@ import com.mycompany.concurrency.model.Partita;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
@@ -61,7 +62,7 @@ public class MGController {
      
         if(indiceDomanda < domande.size()) {
             
-          LBLDomanda.setText(domande.get(indiceDomanda).toString());
+          LBLDomanda.setText(domande.get(indiceDomanda).toString() + " = ?");
           
           LBLRestanti.setText((indiceDomanda + 1) + "/" + domande.size());
           
@@ -124,10 +125,7 @@ public class MGController {
         
         String risposta = TXFRisposta.getText();
         
-        if(risposta.isEmpty() || !risposta.matches("[0-9]+"))
-            domande.get(indiceDomanda - 1).setRisposta("");
-        else
-            domande.get(indiceDomanda - 1).setRisposta(risposta);
+        domande.get(indiceDomanda - 1).setRisposta(risposta);
         
         setDomanda();
     }
@@ -136,8 +134,11 @@ public class MGController {
      
         try {
             FXMLLoader loader = new FXMLLoader(MRController.class.getResource("menuRisultato.fxml"));
-            Scene scena = new Scene(loader.load());
+            Scene scena = new Scene(loader.load(), 640, 480);
         
+            MRController mrController = loader.getController();
+            mrController.setPartita(partita);
+          
             Stage stage = (Stage) BTNFatto.getScene().getWindow();
         
             stage.setScene(scena);
