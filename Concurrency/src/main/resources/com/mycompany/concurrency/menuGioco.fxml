@@ -19,7 +19,7 @@
       </Label>
       <Label fx:id="LBLRestanti" layoutX="283.0" layoutY="209.0" text="resto" />
       <TextField fx:id="TXFRisposta" layoutX="207.0" layoutY="142.0" styleClass="stileTXT" stylesheets="@newCascadeStyleSheet.css" />
-      <Button fx:id="BTNFatto" layoutX="367.0" layoutY="261.0" mnemonicParsing="false" onAction="#cambiaDomandaBtn" styleClass="stileBTN" stylesheets="@newCascadeStyleSheet.css" text="Next" textFill="WHITE">
+      <Button fx:id="BTNFatto" layoutX="367.0" layoutY="261.0" mnemonicParsing="false" styleClass="stileBTN" stylesheets="@newCascadeStyleSheet.css" text="Next" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Button>

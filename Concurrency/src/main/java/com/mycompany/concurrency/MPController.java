@@ -63,10 +63,7 @@ public class MPController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         
         inizializzaRadioButton();
-        inizializzaPulsanteGioca();
-        
-         iniziallizzaStack();
-        
+        inizializzaPulsanteGioca();        
     }
     
     private void inizializzaRadioButton() {
@@ -88,12 +85,11 @@ public class MPController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("menuGioco.fxml"));
         Parent root = loader.load(); 
         MGController mgController = loader.getController();
-        mgController.setP(p); 
+        mgController.setPartita(p); 
          
         Stage nuovoStage = new Stage();
         nuovoStage.setScene(new Scene(root));
-        nuovoStage.show();
-      
+        nuovoStage.show(); 
     }
 
     private void inizializzaPulsanteGioca() {
@@ -119,25 +115,16 @@ public class MPController implements Initializable {
            
         case FACILE: 
           p =  new Partita(setNome_field.getText(),difficolta);
-            break;
+          break;
         case MEDIO:
-            //new Partita();
-              p =  new Partita(setNome_field.getText(),difficolta);
+            p =  new Partita(setNome_field.getText(),difficolta);
             break;    
         case DIFFICILE:
-            //new Partita();
-              p =  new Partita(setNome_field.getText(),difficolta);
+            p =  new Partita(setNome_field.getText(),difficolta);
             break;
        }
     }
-
- public void  iniziallizzaStack(){
- 
- 
- }
-
-   
-
+    
     @FXML
     private void btnGiocaHover(MouseEvent event) {
    
@@ -150,42 +137,41 @@ public class MPController implements Initializable {
           TranslateAnimation(false);
     }
 
-  public void TranslateAnimation (boolean inOut){
+    public void TranslateAnimation (boolean inOut){
   
-   if(inOut){
+        if(inOut){
+       
+            TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
+            textSlide.setFromX(0);
+            textSlide.setToX(100);
+            textSlide.play();
         
-         TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
-        textSlide.setFromX(0);
-        textSlide.setToX(100);
-        textSlide.play();
-        
-        TranslateTransition imageSlide = new TranslateTransition(Duration.millis(300),Icona_play);
-        imageSlide.setFromX(0);
-        imageSlide.setToX(45);
-        imageSlide.play();
-          FadeTransition  textOpacity;
-        textOpacity = new FadeTransition(Duration.millis(300),text_tastoPLay);
-                textOpacity.setFromValue(1.0);
-                textOpacity.setToValue(0.0);
-                 textOpacity.play();
+            TranslateTransition imageSlide = new TranslateTransition(Duration.millis(300),Icona_play);
+            imageSlide.setFromX(0);
+            imageSlide.setToX(45);
+            imageSlide.play();
+            FadeTransition  textOpacity;
+            textOpacity = new FadeTransition(Duration.millis(300),text_tastoPLay);
+            textOpacity.setFromValue(1.0);
+            textOpacity.setToValue(0.0);
+            textOpacity.play();
   
-  }else{
+        }else{
      
-      TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
-        textSlide.setFromX(100);
-        textSlide.setToX(0);
-        textSlide.play();
+            TranslateTransition textSlide = new TranslateTransition(Duration.millis(300),text_tastoPLay);
+            textSlide.setFromX(100);
+            textSlide.setToX(0);
+            textSlide.play();
     
-        TranslateTransition imageSlide = new TranslateTransition(Duration.millis(300),Icona_play);
-        imageSlide.setFromX(45);
-        imageSlide.setToX(0);
-        imageSlide.play();
-     FadeTransition  textOpacity;
-        textOpacity = new FadeTransition(Duration.millis(300),text_tastoPLay);
-                textOpacity.setFromValue(0.0);
-                textOpacity.setToValue(1.0);
-                 textOpacity.play();
+            TranslateTransition imageSlide = new TranslateTransition(Duration.millis(300),Icona_play);
+            imageSlide.setFromX(45);
+            imageSlide.setToX(0);
+            imageSlide.play();
+            FadeTransition  textOpacity;
+            textOpacity = new FadeTransition(Duration.millis(300),text_tastoPLay);
+            textOpacity.setFromValue(0.0);
+            textOpacity.setToValue(1.0);
+            textOpacity.play();
      }          
- 
   }
 }

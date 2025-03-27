@@ -38,9 +38,6 @@ public class Domanda {
     
     public int getRisultato() { return risultato; }
     
-    
-    
-    
     @Override
     public String toString() {
         

@@ -5,6 +5,7 @@ import com.mycompany.concurrency.model.Partita;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,53 +32,57 @@ public class MGController implements Initializable{
     private TextField TXFRisposta;
     
     private Partita partita;
-    private ArrayList<Domanda> domande;
+    private List<Domanda> domande;
     private int indiceDomanda = 0;
 
     
     @Override
      public void initialize(URL location, ResourceBundle resources) {
         
-         
-      
-        
+       BTNFatto.setOnAction(e -> setDomanda());
      }
-
-    
-    
-    
-    public void setP(Partita p) {
-        partita = p;
-        domande =  (ArrayList<Domanda>) partita.getQuestions();
-        setDomanda(indiceDomanda);
+     
+    public void setPartita(Partita partita) {
+        
+        this.partita = partita;
+        
+        domande = partita.getDomande();
+        
+        setDomanda();
     }
-    
-    
-    
-      @FXML
-     public void setDomanda(int i){
-     
-     LBLDomanda.setText(domande.get(i).toString());
-     }
-    
-    
-    
-    
-    @FXML
-    public void cambiaDomandaBtn(ActionEvent event) {
    
-        
+    private void setDomanda(){
      
+        if(indiceDomanda < domande.size()) {
+            
+          LBLDomanda.setText(domande.get(indiceDomanda).toString());
+          
+          LBLRestanti.setText((indiceDomanda + 1) + "/" + domande.size());
+          
+          avviaTimer();
+          
+          indiceDomanda++;
+        } 
+    }
+   
+    private void avviaTimer() {
+        
+        
+    }
+    /*
+    //@FXML
+    public void cambiaDomandaBtn(ActionEvent event) {
+        /*
      if(indiceDomanda<10){ 
          //mostra la domanda 
          setDomanda(indiceDomanda);
-         
+        
          
          // il listner si potrebbe usare per i controlli di input solo numeri 
         /*
          TXFRisposta.textProperty().addListener((observable, oldValue ,newValue) ->{
             }); */
-           
+         /*  
          setRisposta(TXFRisposta.getText());
          indiceDomanda++;
      }
@@ -95,7 +100,7 @@ public class MGController implements Initializable{
       }
     
     }
-    
+   
     private void changeDomandaWithTimer(){
     
     
@@ -124,5 +129,6 @@ public class MGController implements Initializable{
     }
     
     } 
+*/
 }
     
