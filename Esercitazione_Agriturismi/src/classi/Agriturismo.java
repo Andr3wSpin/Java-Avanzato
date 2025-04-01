@@ -144,4 +144,4 @@ public class Agriturismo {
         return Objects.hashCode(denominazione);
     }
 }
-}
+

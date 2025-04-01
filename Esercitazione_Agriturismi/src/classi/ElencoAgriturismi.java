@@ -15,13 +15,13 @@ import java.util.function.Predicate;
 
 public class ElencoAgriturismi {
 
-  private Set<Agriturismo> elenco ;
+  private List<Agriturismo> elenco ;
 
 
 
   public ElencoAgriturismi(){
 
-    elenco = new TreeSet<>();
+    elenco = new ArrayList<>();
 
   }
 
@@ -41,7 +41,7 @@ public class ElencoAgriturismi {
 
 
   public ElencoAgriturismi filtra (Predicate<Agriturismo> filtroAgriturismo){
-      
+
 
      ElencoAgriturismi e = new ElencoAgriturismi();
 
@@ -59,22 +59,17 @@ public class ElencoAgriturismi {
 
   public void ordina(Comparator<Agriturismo> comparator){
 
-
+      elenco.sort(comparator);
 
   }
 
-  public void aggiorna(Agriturismo b ,Consumer<Agriturismo> aggiorna){
+  public void aggiorna(Consumer<Agriturismo> aggiorna){
 
 
 
         for (Agriturismo a: elenco){
 
-         if(a.equals(b))  {
-
            aggiorna.accept(a);
-
-
-         }
 
         }
 
