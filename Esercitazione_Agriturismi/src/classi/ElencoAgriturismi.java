@@ -1,6 +1,7 @@
 package classi;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -30,14 +31,24 @@ public class ElencoAgriturismi {
 
   }
 
-  public void filtra (Predicate){
+  public List<Agriturismo> filtra (Predicate<Agriturismo> filtroAgriturismo){
+
+      List<Agriturismo> agriturismoFiltrato = new ArrayList<>();
+
+       for (Agriturismo a: elenco){
+
+         if (filtroAgriturismo.test(a))  agriturismoFiltrato.add(a);
+
+       }
 
 
+        return agriturismoFiltrato;
   }
 
 
-  public void ordina(){
+  public void ordina(Comparator<Agriturismo> comparator){
 
+    elenco.sort(comparator);
 
   }
 
@@ -53,7 +64,7 @@ public class ElencoAgriturismi {
   public void carica(){
 
 
-    
+
   }
 
 }
