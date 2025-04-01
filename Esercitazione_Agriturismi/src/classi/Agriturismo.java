@@ -107,7 +107,7 @@ public class Agriturismo {
 
     @Override
     public String toString(){
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append(denominazione + " di " + titolare + "\n" + indirizzo + "\n" + comune + "\n");
         if(postiLetto > 0)
@@ -119,16 +119,16 @@ public class Agriturismo {
         if(postiRoulotte > 0)
             sb.append("Disponibili " + postiRoulotte + " posti roulotte.\n");
         sb.append(recapito + "\n");
-        sb.append(denominazione+" di "+titolare+"\n"+indirizzo+"\n"+comune+"\n");
-        if(postiLetto>0)
-            sb.append("Disponibili "+postiLetto+" posti letto.\n");
-        if(postiMacchina>0)
-            sb.append("Disponibili posti "+postiMacchina+" auto.\n");
-        if(postiTenda>0)
-            sb.append("Disponibili "+postiTenda+" posti tenda.\n");
-        if(postiRoulotte>0)
-            sb.append("Disponibili "+postiRoulotte+" posti roulotte.\n");
-        sb.append(recapito);
+        sb.append(denominazione+" di " + titolare + "\n" + indirizzo + "\n" + comune + "\n");
+        if(postiLetto > 0)
+            sb.append("Disponibili "+ postiLetto +" posti letto.\n");
+        if(postiMacchina > 0)
+            sb.append("Disponibili posti " + postiMacchina + " auto.\n");
+        if(postiTenda > 0)
+            sb.append("Disponibili " + postiTenda + " posti tenda.\n");
+        if(postiRoulotte > 0)
+            sb.append("Disponibili " + postiRoulotte + " posti roulotte.\n");
+        sb.append(recapito + "\n");
         return sb.toString();
     }
 
