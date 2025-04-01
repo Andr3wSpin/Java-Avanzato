@@ -1,20 +1,18 @@
 package classi;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class ElencoAgriturismi {
 
-  private List<Agriturismo> elenco ;
+  private Set<Agriturismo> elenco ;
 
 
 
   public ElencoAgriturismi(){
 
-    elenco = new ArrayList<>();
+    elenco = new TreeSet<>();
 
   }
 
@@ -32,37 +30,42 @@ public class ElencoAgriturismi {
 
   }
 
-  public List<Agriturismo> filtra (Predicate<Agriturismo> filtroAgriturismo){
+  public ElencoAgriturismi filtra (Predicate<Agriturismo> filtroAgriturismo){
 
-      List<Agriturismo> agriturismoFiltrato = new ArrayList<>();
+     ElencoAgriturismi e = new ElencoAgriturismi();
 
        for (Agriturismo a: elenco){
 
-         if (filtroAgriturismo.test(a))  agriturismoFiltrato.add(a);
+         if (filtroAgriturismo.test(a))  e.elenco.add(a);
 
        }
 
 
-        return agriturismoFiltrato;
+        return e;
   }
 
 
   public void ordina(Comparator<Agriturismo> comparator){
 
-    elenco.sort(comparator);
+
 
   }
 
-  public List<Agriturismo> aggiorna(Consumer<Agriturismo> aggiorna){
-        List<Agriturismo> agriturismoAggiornato = new ArrayList<>();
+  public ElencoAgriturismi aggiorna(Agriturismo b ,Consumer<Agriturismo> aggiorna){
+
+    ElencoAgriturismi e = new ElencoAgriturismi();
 
         for (Agriturismo a: elenco){
 
+         if(a.equals(b))  {
 
+           aggiorna.accept(a);
+
+         }
 
         }
 
-        return agriturismoAggiornato;
+        return e;
   }
 
   public void somma(){
