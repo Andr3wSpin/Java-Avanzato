@@ -17,74 +17,51 @@ public class ElencoAgriturismi {
 
   private List<Agriturismo> elenco ;
 
-
-
-  public ElencoAgriturismi(){
+  public ElencoAgriturismi() {
 
     elenco = new ArrayList<>();
-
   }
 
 
-  public void aggiungi (Agriturismo a){
+  public void aggiungi(Agriturismo a) {
 
     elenco.add(a);
+  }
+
+  public void esporta() {
 
   }
 
-
-
-
-  public void esporta(){
-
-  }
-
-
-  public ElencoAgriturismi filtra (Predicate<Agriturismo> filtroAgriturismo){
-
+  public ElencoAgriturismi filtra (Predicate<Agriturismo> filtroAgriturismo) {
 
      ElencoAgriturismi e = new ElencoAgriturismi();
 
        for (Agriturismo a: elenco){
 
          if (filtroAgriturismo.test(a))  e.elenco.add(a);
-
        }
-
-
 
         return e;
   }
 
-
-  public void ordina(Comparator<Agriturismo> comparator){
+  public void ordina(Comparator<Agriturismo> comparator) {
 
       elenco.sort(comparator);
 
   }
 
-  public void aggiorna(Consumer<Agriturismo> aggiorna){
+  public void aggiorna(Consumer<Agriturismo> aggiorna) {
 
-
-
-        for (Agriturismo a: elenco){
-
-           aggiorna.accept(a);
-
-        }
-
-
+        for (Agriturismo a: elenco) aggiorna.accept(a);
   }
 
   public void somma(){
 
   }
 
-
-  public static ElencoAgriturismi carica(String nomeFile){
+  public static ElencoAgriturismi carica(String nomeFile) {
 
       ElencoAgriturismi elencoAgriturismi = new ElencoAgriturismi();
-
 
       try(BufferedReader br = new BufferedReader(new FileReader(nomeFile))) {
 
@@ -113,7 +90,6 @@ public class ElencoAgriturismi {
 
           return null;
       }
-
   }
 
   @Override
