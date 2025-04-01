@@ -106,6 +106,7 @@ public class Agriturismo {
     @Override
     public String toString(){
         StringBuffer sb = new StringBuffer();
+<<<<<<< HEAD
         sb.append(denominazione + " di " + titolare + "\n" + indirizzo + "\n" + comune + "\n");
         if(postiLetto > 0)
             sb.append("Disponibili " + postiLetto + " posti letto.\n");
@@ -116,18 +117,21 @@ public class Agriturismo {
         if(postiRoulotte > 0)
             sb.append("Disponibili " + postiRoulotte + " posti roulotte.\n");
         sb.append(recapito + "\n");
+=======
+        sb.append(denominazione+" di "+titolare+"\n"+indirizzo+"\n"+comune+"\n");
+        if(postiLetto>0)
+            sb.append("Disponibili "+postiLetto+" posti letto.\n");
+        if(postiMacchina>0)
+            sb.append("Disponibili posti "+postiMacchina+" auto.\n");
+        if(postiTenda>0)
+            sb.append("Disponibili "+postiTenda+" posti tenda.\n");
+        if(postiRoulotte>0)
+            sb.append("Disponibili "+postiRoulotte+" posti roulotte.\n");
+        sb.append(recapito);
+>>>>>>> 9ea7eca69748231d1317711b9c0212f5674ca85e
         return sb.toString();
     }
 
-    @Override
-    public int hashCode(){
-        return comune.hashCode();
-    }
 
-    @Override
-    public boolean equals(Object o){
-        if(o == null) return false;
-        if(o.getClass() != this.getClass()) return false;
-        return ((Agriturismo) o).getComune().equals(comune);
     }
 }

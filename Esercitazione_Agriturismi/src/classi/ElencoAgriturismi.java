@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class ElencoAgriturismi {
@@ -33,19 +35,41 @@ public class ElencoAgriturismi {
 
   }
 
+<<<<<<< HEAD
   public void filtra (Predicate p){
+=======
+  public List<Agriturismo> filtra (Predicate<Agriturismo> filtroAgriturismo){
+
+      List<Agriturismo> agriturismoFiltrato = new ArrayList<>();
+
+       for (Agriturismo a: elenco){
+
+         if (filtroAgriturismo.test(a))  agriturismoFiltrato.add(a);
+
+       }
+>>>>>>> 9ea7eca69748231d1317711b9c0212f5674ca85e
 
 
+        return agriturismoFiltrato;
   }
 
 
-  public void ordina(){
+  public void ordina(Comparator<Agriturismo> comparator){
 
+    elenco.sort(comparator);
 
   }
 
-  public void aggiorna(){
+  public List<Agriturismo> aggiorna(Consumer<Agriturismo> aggiorna){
+        List<Agriturismo> agriturismoAggiornato = new ArrayList<>();
 
+        for (Agriturismo a: elenco){
+
+
+
+        }
+
+        return agriturismoAggiornato;
   }
 
   public void somma(){
@@ -57,6 +81,7 @@ public class ElencoAgriturismi {
 
       ElencoAgriturismi elencoAgriturismi = new ElencoAgriturismi();
 
+<<<<<<< HEAD
       try(BufferedReader br = new BufferedReader(new FileReader(nomeFile))) {
 
           String line = br.readLine();
@@ -84,6 +109,9 @@ public class ElencoAgriturismi {
 
           return null;
       }
+=======
+
+>>>>>>> 9ea7eca69748231d1317711b9c0212f5674ca85e
   }
 
   @Override
