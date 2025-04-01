@@ -1,23 +1,27 @@
 package classi;
 
+<<<<<<< HEAD
+import java.util.*;
+=======
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+>>>>>>> 2ebbd7f9d8007dbf97ade7beacf2ddd945827055
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class ElencoAgriturismi {
 
-  private List<Agriturismo> elenco ;
+  private Set<Agriturismo> elenco ;
 
 
 
   public ElencoAgriturismi(){
 
-    elenco = new ArrayList<>();
+    elenco = new TreeSet<>();
 
   }
 
@@ -36,40 +40,49 @@ public class ElencoAgriturismi {
   }
 
 <<<<<<< HEAD
+  public ElencoAgriturismi filtra (Predicate<Agriturismo> filtroAgriturismo){
+=======
+<<<<<<< HEAD
   public void filtra (Predicate p){
 =======
   public List<Agriturismo> filtra (Predicate<Agriturismo> filtroAgriturismo){
+>>>>>>> 2ebbd7f9d8007dbf97ade7beacf2ddd945827055
 
-      List<Agriturismo> agriturismoFiltrato = new ArrayList<>();
+     ElencoAgriturismi e = new ElencoAgriturismi();
 
        for (Agriturismo a: elenco){
 
-         if (filtroAgriturismo.test(a))  agriturismoFiltrato.add(a);
+         if (filtroAgriturismo.test(a))  e.elenco.add(a);
 
        }
 >>>>>>> 9ea7eca69748231d1317711b9c0212f5674ca85e
 
 
-        return agriturismoFiltrato;
+        return e;
   }
 
 
   public void ordina(Comparator<Agriturismo> comparator){
 
-    elenco.sort(comparator);
+
 
   }
 
-  public List<Agriturismo> aggiorna(Consumer<Agriturismo> aggiorna){
-        List<Agriturismo> agriturismoAggiornato = new ArrayList<>();
+  public ElencoAgriturismi aggiorna(Agriturismo b ,Consumer<Agriturismo> aggiorna){
+
+    ElencoAgriturismi e = new ElencoAgriturismi();
 
         for (Agriturismo a: elenco){
 
+         if(a.equals(b))  {
 
+           aggiorna.accept(a);
+
+         }
 
         }
 
-        return agriturismoAggiornato;
+        return e;
   }
 
   public void somma(){
