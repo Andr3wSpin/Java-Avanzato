@@ -68,9 +68,9 @@ public class ElencoAgriturismi {
 
   }
 
-  public ElencoAgriturismi aggiorna(Agriturismo b ,Consumer<Agriturismo> aggiorna){
+  public void aggiorna(Agriturismo b ,Consumer<Agriturismo> aggiorna){
 
-    ElencoAgriturismi e = new ElencoAgriturismi();
+
 
         for (Agriturismo a: elenco){
 
@@ -78,11 +78,12 @@ public class ElencoAgriturismi {
 
            aggiorna.accept(a);
 
+
          }
 
         }
 
-        return e;
+
   }
 
   public void somma(){
