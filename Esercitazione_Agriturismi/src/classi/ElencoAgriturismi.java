@@ -1,15 +1,15 @@
 package classi;
 
-<<<<<<< HEAD
+
 import java.util.*;
-=======
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
->>>>>>> 2ebbd7f9d8007dbf97ade7beacf2ddd945827055
+
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -39,14 +39,9 @@ public class ElencoAgriturismi {
 
   }
 
-<<<<<<< HEAD
+
   public ElencoAgriturismi filtra (Predicate<Agriturismo> filtroAgriturismo){
-=======
-<<<<<<< HEAD
-  public void filtra (Predicate p){
-=======
-  public List<Agriturismo> filtra (Predicate<Agriturismo> filtroAgriturismo){
->>>>>>> 2ebbd7f9d8007dbf97ade7beacf2ddd945827055
+      
 
      ElencoAgriturismi e = new ElencoAgriturismi();
 
@@ -55,7 +50,7 @@ public class ElencoAgriturismi {
          if (filtroAgriturismo.test(a))  e.elenco.add(a);
 
        }
->>>>>>> 9ea7eca69748231d1317711b9c0212f5674ca85e
+
 
 
         return e;
@@ -95,7 +90,7 @@ public class ElencoAgriturismi {
 
       ElencoAgriturismi elencoAgriturismi = new ElencoAgriturismi();
 
-<<<<<<< HEAD
+
       try(BufferedReader br = new BufferedReader(new FileReader(nomeFile))) {
 
           String line = br.readLine();
@@ -123,9 +118,7 @@ public class ElencoAgriturismi {
 
           return null;
       }
-=======
 
->>>>>>> 9ea7eca69748231d1317711b9c0212f5674ca85e
   }
 
   @Override
