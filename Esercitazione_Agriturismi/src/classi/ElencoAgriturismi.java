@@ -3,6 +3,7 @@ package classi;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class ElencoAgriturismi {
@@ -52,8 +53,16 @@ public class ElencoAgriturismi {
 
   }
 
-  public void aggiorna(){
+  public List<Agriturismo> aggiorna(Consumer<Agriturismo> aggiorna){
+        List<Agriturismo> agriturismoAggiornato = new ArrayList<>();
 
+        for (Agriturismo a: elenco){
+
+
+
+        }
+
+        return agriturismoAggiornato;
   }
 
   public void somma(){
