@@ -12,6 +12,8 @@ public class Agriturismo   {
     private int postiTenda;
     private int postiRoulotte;
     private String recapito;
+    private boolean pernottamento;
+    private boolean isCamping;
 
     public Agriturismo(String comune, String titolare, String denominazione, String indirizzo, int postiLetto, int postiMacchina, int postiTenda, int postiRoulotte, String recapito) {
         this.comune = comune;
@@ -31,6 +33,8 @@ public class Agriturismo   {
         this.postiRoulotte = postiRoulotte;
 
         this.recapito = recapito;
+        this.pernottamento = false;
+        this.isCamping=false;
     }
 
     public String getComune() {
@@ -101,6 +105,23 @@ public class Agriturismo   {
         return recapito;
     }
 
+    public boolean getPernottamento() {
+        return pernottamento;
+    }
+    public void isPrenotabile(boolean check){
+
+        this.pernottamento = check;
+
+    }
+
+    public boolean isCamping() {
+        return isCamping;
+    }
+
+    public void setCamping(boolean camping) {
+        isCamping = camping;
+    }
+
     public void setRecapito(String recapito) {
         this.recapito = recapito;
     }
@@ -128,6 +149,11 @@ public class Agriturismo   {
             sb.append("Disponibili " + postiTenda + " posti tenda.\n");
         if(postiRoulotte > 0)
             sb.append("Disponibili " + postiRoulotte + " posti roulotte.\n");
+        if(getPernottamento())
+            sb.append("è possibile prenotare un posto \n");
+        if(isCamping())
+            sb.append("è possibile entrare nel campeggio\n");
+
         sb.append(recapito + "\n");
         return sb.toString();
     }
