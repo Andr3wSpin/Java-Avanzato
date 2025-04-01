@@ -1,5 +1,7 @@
 package classi;
 
+import java.util.Objects;
+
 public class Agriturismo {
     private String comune;
     private String titolare;
@@ -106,7 +108,7 @@ public class Agriturismo {
     @Override
     public String toString(){
         StringBuffer sb = new StringBuffer();
-<<<<<<< HEAD
+
         sb.append(denominazione + " di " + titolare + "\n" + indirizzo + "\n" + comune + "\n");
         if(postiLetto > 0)
             sb.append("Disponibili " + postiLetto + " posti letto.\n");
@@ -117,7 +119,6 @@ public class Agriturismo {
         if(postiRoulotte > 0)
             sb.append("Disponibili " + postiRoulotte + " posti roulotte.\n");
         sb.append(recapito + "\n");
-=======
         sb.append(denominazione+" di "+titolare+"\n"+indirizzo+"\n"+comune+"\n");
         if(postiLetto>0)
             sb.append("Disponibili "+postiLetto+" posti letto.\n");
@@ -128,10 +129,19 @@ public class Agriturismo {
         if(postiRoulotte>0)
             sb.append("Disponibili "+postiRoulotte+" posti roulotte.\n");
         sb.append(recapito);
->>>>>>> 9ea7eca69748231d1317711b9c0212f5674ca85e
         return sb.toString();
     }
 
-
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Agriturismo that = (Agriturismo) o;
+        return Objects.equals(denominazione, that.denominazione);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(denominazione);
+    }
+}
 }
