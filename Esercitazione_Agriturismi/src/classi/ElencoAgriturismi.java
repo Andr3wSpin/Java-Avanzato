@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class ElencoAgriturismi {
@@ -55,7 +56,17 @@ public class ElencoAgriturismi {
         for (Agriturismo a: elenco) aggiorna.accept(a);
   }
 
-  public void somma(){
+  public int somma(Function<Agriturismo,Integer> sommatore){
+
+      int somma=0;
+
+       for (Agriturismo a : elenco){
+
+          somma += sommatore.apply(a);
+
+       }
+
+    return somma;
 
   }
 

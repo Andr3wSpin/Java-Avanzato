@@ -2,7 +2,7 @@ package classi;
 
 import java.util.Objects;
 
-public class Agriturismo {
+public class Agriturismo   {
     private String comune;
     private String titolare;
     private String denominazione;
@@ -143,5 +143,7 @@ public class Agriturismo {
     public int hashCode() {
         return Objects.hashCode(denominazione);
     }
+
+
 }
 
