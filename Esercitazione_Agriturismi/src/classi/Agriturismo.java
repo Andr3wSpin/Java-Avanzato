@@ -1,4 +1,136 @@
 package classi;
 
 public class Agriturismo {
+    private String comune;
+    private String titolare;
+    private String denominazione;
+    private String indirizzo;
+    private int postiLetto;
+    private int postiMacchina;
+    private int postiTenda;
+    private int postiRoulotte;
+    private String recapito;
+
+    public Agriturismo(String comune, String titolare, String denominazione, String indirizzo, int postiLetto, int postiMacchina, int postiTenda, int postiRoulotte, String recapito) {
+        this.comune = comune;
+
+        this.titolare = titolare;
+
+        this.denominazione = denominazione;
+
+        this.indirizzo = indirizzo;
+
+        this.postiLetto = postiLetto;
+
+        this.postiMacchina = postiMacchina;
+
+        this.postiTenda = postiTenda;
+
+        this.postiRoulotte = postiRoulotte;
+
+        this.recapito = recapito;
+    }
+
+    public String getComune() {
+        return comune;
+    }
+
+    public void setComune(String comune) {
+        this.comune = comune;
+    }
+
+    public String getTitolare() {
+        return titolare;
+    }
+
+    public void setTitolare(String titolare) {
+        this.titolare = titolare;
+    }
+
+    public String getDenominazione() {
+        return denominazione;
+    }
+
+    public void setDenominazione(String denominazione) {
+        this.denominazione = denominazione;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
+    }
+
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
+    }
+
+    public int getPostiLetto() {
+        return postiLetto;
+    }
+
+    public void setPostiLetto(int postiLetto) {
+        this.postiLetto = postiLetto;
+    }
+
+    public int getPostiMacchina() {
+        return postiMacchina;
+    }
+
+    public void setPostiMacchina(int postiMacchina) {
+        this.postiMacchina = postiMacchina;
+    }
+
+    public int getPostiTenda() {
+        return postiTenda;
+    }
+
+    public void setPostiTenda(int postiTenda) {
+        this.postiTenda = postiTenda;
+    }
+
+    public int getPostiRoulotte() {
+        return postiRoulotte;
+    }
+
+    public void setPostiRoulotte(int postiRoulotte) {
+        this.postiRoulotte = postiRoulotte;
+    }
+
+    public String getRecapito() {
+        return recapito;
+    }
+
+    public void setRecapito(String recapito) {
+        this.recapito = recapito;
+    }
+
+    @Override
+    public String toString(){
+        StringBuffer sb = new StringBuffer();
+        sb.append(denominazione+" di "+titolare+"\n"+indirizzo+"\n"+comune+"\n");
+        if(postiLetto>0)
+            sb.append("Disponibili "+postiLetto+" posti letto.\n");
+        if(postiMacchina>0)
+            sb.append("Disponibili posti "+postiMacchina" auto.\n");
+        if(postiTenda>0)
+            sb.append("Disponibili "+postiTenda" posti tenda.\n");
+        if(postiRoulotte>0)
+            sb.append("Disponibili "+postiRoulotte+" posti roulotte.\n");
+        sb.append(recapito);
+        return sb.toString();
+    }
+
+    @Override
+    public int hashCode(){
+        return comune.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null) return false;
+        if(o.getClass() != this.getClass()) return false;
+        return ((Agriturismo) o).getComune().equals(comune);
+    }
+
+
+
 }
