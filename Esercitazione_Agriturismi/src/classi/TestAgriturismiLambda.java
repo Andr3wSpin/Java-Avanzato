@@ -6,23 +6,21 @@ public class TestAgriturismiLambda {
 
         ElencoAgriturismi elencoAgriturismi = ElencoAgriturismi.carica("Agriturismi-Napoli.csv");
 
-       //System.out.println(elencoAgriturismi);
-
+        //System.out.println(elencoAgriturismi);
 
         //filtro per tutti i comuni di agerola con piu di 10 posti letto
-        ElencoAgriturismi agerola = elencoAgriturismi.filtra(a-> a.getComune().equals("AGEROLA")).filtra(a-> !a.getPernottamento());
-       // System.out.println(agerola);
+        ElencoAgriturismi agerola = elencoAgriturismi.filtra(a-> a.getComune().equals("AGEROLA")).filtra(a-> a.getPostiLetto() > 10);
+        //System.out.println(agerola);
 
         //aggiorno il valore pernottamento se impostato a false
-       agerola.aggiorna(agriturismo ->  agriturismo.isPrenotabile(true));
-       // System.out.println(agerola);
-
-
+        agerola.aggiorna(agriturismo -> agriturismo.isPernottamento());
+        System.out.println(agerola);
+        agerola.filtra(agriturismo -> agriturismo.isPernottamento() == true);
         //aggirono  il valore isCamping se ci sono posti tenda
 
         ElencoAgriturismi camping = elencoAgriturismi.filtra( f-> f.getPostiTenda()>0).filtra(f-> f.getPostiRoulotte()>0);
         camping.aggiorna(f-> f.setCamping(true));
-        System.out.println(camping);
+        //System.out.println(camping);
 
        // ElencoAgriturismi agerola = elencoAgriturismi.filtra( a-> a.getComune().equals("AGEROLA"));
         //agerola.aggiorna(a-> a.setPostiLetto(5) );
@@ -34,7 +32,5 @@ public class TestAgriturismiLambda {
       //ritorno il numero di posti letto id tutti gli agriturismi di agerola
     //  int somma=  agerola.somma( (a)->  a.getPostiLetto()  );
       //  System.out.println(somma);
-
-
     }
 }

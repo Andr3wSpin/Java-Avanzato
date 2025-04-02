@@ -29,8 +29,16 @@ public class ElencoAgriturismi {
     elenco.add(a);
   }
 
-  public void esporta() {
+  public Set<String> esporta(Predicate<Agriturismo> filtroAgriturismo) {
 
+      Set<String> comuni = new HashSet<>();
+
+      for(Agriturismo a : elenco) {
+
+          if(filtroAgriturismo.test(a)) comuni.add(a.getComune());
+      }
+
+      return comuni;
   }
 
   public ElencoAgriturismi filtra (Predicate<Agriturismo> filtroAgriturismo) {
