@@ -30,7 +30,7 @@ public class TestAgriturismiLambda {
         agerola.ordina( (b, a) -> a.getTitolare().compareTo(b.getTitolare()));
      //  System.out.println(agerola);
       //ritorno il numero di posti letto id tutti gli agriturismi di agerola
-    //  int somma=  agerola.somma( (a)->  a.getPostiLetto()  );
-      //  System.out.println(somma);
+    int somma=  agerola.somma( (a)->  a.getPostiLetto()  );
+       System.out.println(somma);
     }
 }

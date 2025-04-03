@@ -137,8 +137,6 @@ public class Agriturismo   {
         if(postiRoulotte > 0)
             sb.append("Disponibili " + postiRoulotte + " posti roulotte.\n");
         sb.append(recapito + "\n");
-        sb.append("Pernottamento: " + isPernottamento() + "\n");
-        sb.append("Camping: " + isCamping() + "\n");
 
         return sb.toString();
     }

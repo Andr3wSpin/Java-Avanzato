@@ -37,13 +37,8 @@ public class MetodiAgriturismo {
         return somma;
     }
 
-    public boolean filtraPerComune(Agriturismo a, String comune) {
-
-        return a.getComune().equals(comune);
-    }
-
     public boolean filtraPerComune(Agriturismo agriturismo) {
 
-        return agriturismo.getComune().equals("Gragnano");
+        return agriturismo.getComune().equals("GRAGNANO");
     }
 }
