@@ -15,7 +15,7 @@ public class TestAgriturismiReference {
         elencoAgriturismi.aggiorna(ma::aggiornaPernottamento);
         elencoAgriturismi.aggiorna(ma::aggiornaCamping);
 
-        ElencoAgriturismi e2 =  elencoAgriturismi.filtra(agriturismo -> agriturismo.isCamping());
+        ElencoAgriturismi e2 =  elencoAgriturismi.filtra(Agriturismo::isCamping);
 
         //System.out.println(e2);
 
@@ -24,7 +24,8 @@ public class TestAgriturismiReference {
         //System.out.println(comuni);
 
         e2.ordina(ma::ordinaPerNome);
+         int somma = e2.somma(Agriturismo::getPostiLetto) ;
 
-        //System.out.println(e2);
+        System.out.println(somma);
     }
 }
