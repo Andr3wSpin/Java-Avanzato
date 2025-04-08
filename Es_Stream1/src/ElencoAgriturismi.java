@@ -123,13 +123,9 @@ public class ElencoAgriturismi {
       return sb.toString();
   }
 
-  public Stream<Agriturismo> stream(){
-      return elenco.stream();
-  }
 
   public Set<?> elencoComuni(){
-      Set<?> titoli = this.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
+      Set<?> titoli = elenco.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
       return titoli;
-
   }
 }
