@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -121,8 +122,13 @@ public class ElencoAgriturismi {
       return sb.toString();
   }
 
-  public Stream<?> stream(){
+  public Stream<Agriturismo> stream(){
       return elenco.stream();
   }
 
+  public Set<?> elencoComuni(){
+      Set<?> titoli = this.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
+      return titoli;
+
+  }
 }
