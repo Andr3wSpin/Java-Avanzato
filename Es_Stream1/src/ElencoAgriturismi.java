@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class ElencoAgriturismi {
 
@@ -120,4 +121,8 @@ public class ElencoAgriturismi {
 
       return sb.toString();
   }
+
+  public Stream<?> stream(return elenco.stream){
+  }
+
 }
