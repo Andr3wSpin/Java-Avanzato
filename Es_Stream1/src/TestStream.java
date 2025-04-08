@@ -14,7 +14,10 @@ public class TestStream {
 
         System.out.println(elencoAgriturismi);
 
-        Map<String, Integer> postiXcomune =  elencoAgriturismi.stream().map(Agriturismo ::getComune);
+        Map<String, Integer> postiXcomune =  elencoAgriturismi.stream().collect( Collectors.groupingBy(
+                   Agriturismo::getComune,
+                   Collectors.summingInt(Agriturismo::getPostiLetto)
+                                                             ));
 
 
 
