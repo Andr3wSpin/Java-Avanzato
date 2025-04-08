@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
+
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -120,7 +122,7 @@ public class ElencoAgriturismi {
   }
 
   public Stream<?> stream(){
-      return elenco.stream;
+      return elenco.stream();
   }
 
 }
