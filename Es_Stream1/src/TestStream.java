@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class TestStream {
 
     public static void main(String[] args) {
@@ -5,7 +7,11 @@ public class TestStream {
         ElencoAgriturismi elencoAgriturismi = ElencoAgriturismi.carica("Agriturismi-Benevento.csv");
 
         System.out.println(elencoAgriturismi);
-        elencoAgriturismi.stream().filter(    )
+
+        Map<String, Integer> postiXcomune =  elencoAgriturismi.stream().map(Agriturismo ::getComune)
+
+
+
 
 
     }
