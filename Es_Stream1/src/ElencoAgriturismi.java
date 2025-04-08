@@ -32,6 +32,7 @@ public class ElencoAgriturismi {
   public void aggiungi(Agriturismo a) {
 
     elenco.add(a);
+    //ordina();
   }
 
   public Set<String> esporta(Predicate<Agriturismo> filtroAgriturismo) {
@@ -126,13 +127,11 @@ public class ElencoAgriturismi {
       return sb.toString();
   }
 
-  public Stream<Agriturismo> stream(){
-      return elenco.stream();
-  }
 
-  public Set<?> elencoComuni(){
-      Set<?> titoli = this.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
-      return titoli;
+    public Stream<Agriturismo> stream(){
+        return elenco.stream();
+    }
 
-  }
+
+
 }
