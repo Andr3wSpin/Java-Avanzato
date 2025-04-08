@@ -1,5 +1,3 @@
-package classi;
-
 import java.util.Objects;
 
 public class Agriturismo   {
