@@ -119,7 +119,8 @@ public class ElencoAgriturismi {
       return sb.toString();
   }
 
-  public Stream<?> stream(return elenco.stream){
+  public Stream<?> stream(){
+      return elenco.stream;
   }
 
 }
