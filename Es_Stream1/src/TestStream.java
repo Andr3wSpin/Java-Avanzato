@@ -5,7 +5,7 @@ public class TestStream {
         ElencoAgriturismi elencoAgriturismi = ElencoAgriturismi.carica("Agriturismi-Benevento.csv");
 
         System.out.println(elencoAgriturismi);
-        elencoAgriturismi.stream()
+        elencoAgriturismi.stream().filter(    )
 
 
     }

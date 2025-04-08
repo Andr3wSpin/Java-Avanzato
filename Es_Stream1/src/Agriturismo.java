@@ -31,10 +31,14 @@ public class Agriturismo   {
         this.postiRoulotte = postiRoulotte;
 
         this.recapito = recapito;
-
-        this.pernottamento = false;
-
-        this.camping = false;
+        if(postiLetto>0)
+            this.pernottamento = true;
+        else
+            this.pernottamento = false;
+        if(postiRoulotte>0)
+            this.camping = true;
+        else
+            this.camping = false;
     }
 
     public String getComune() {
