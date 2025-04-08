@@ -112,6 +112,7 @@ public class ElencoAgriturismi {
       }
   }
 
+
   @Override
   public String toString() {
 
