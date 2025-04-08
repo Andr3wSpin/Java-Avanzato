@@ -1,3 +1,7 @@
+import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 import java.io.BufferedReader;
@@ -79,37 +83,36 @@ public class ElencoAgriturismi {
 
   }
 
-  public static ElencoAgriturismi carica(String nomeFile) {
+  public static List<Agriturismo> carica(String nomeFile) {
 
-      ElencoAgriturismi elencoAgriturismi = new ElencoAgriturismi();
+      Path filePath = Paths.get(nomeFile);
 
-      try(BufferedReader br = new BufferedReader(new FileReader(nomeFile))) {
+      try(Stream<String> lines = Files.lines(filePath)) {
 
-          String line = br.readLine();
+         return lines.map(l -> {
 
-          while((line = br.readLine()) != null) {
+             String[] campi = l.split(";");
 
-              String[] campi = line.split(";");
+             String comuneAzienda = campi[0];
+             String titolare = campi[1];
+             String denominazioneAzienda = campi[2];
+             String indirizzoAzienda = campi[3];
+             int postiLetto = campi[4].isEmpty() ? 0 : Integer.parseInt(campi[4]);
+             int postiMacchina = campi[5].isEmpty() ? 0 : Integer.parseInt(campi[5]);
+             int postiTenda = campi[6].isEmpty() ? 0 : Integer.parseInt(campi[6]);
+             int postiRoulotte = campi[7].isEmpty() ? 0 : Integer.parseInt(campi[7]);
+             String recapiti = campi[8];
 
-              String comuneAzienda = campi[0];
-              String titolare = campi[1];
-              String denominazioneAzienda = campi[2];
-              String indirizzoAzienda = campi[3];
-              int postiLetto = campi[4].isEmpty() ? 0 : Integer.parseInt(campi[4]);
-              int postiMacchina = campi[5].isEmpty() ? 0 : Integer.parseInt(campi[5]);
-              int postiTenda = campi[6].isEmpty() ? 0 : Integer.parseInt(campi[6]);
-              int postiRoulotte = campi[7].isEmpty() ? 0 : Integer.parseInt(campi[7]);
-              String recapiti = campi[8];
+            return new Agriturismo(comuneAzienda, titolare, denominazioneAzienda,
+                     indirizzoAzienda, postiLetto, postiMacchina, postiTenda, postiRoulotte, recapiti);
+         }).toList();
 
-              elencoAgriturismi.aggiungi(new Agriturismo(comuneAzienda, titolare, denominazioneAzienda,
-                      indirizzoAzienda, postiLetto, postiMacchina, postiTenda, postiRoulotte, recapiti));
-          }
+      } catch (IOException e) {
 
-          return elencoAgriturismi;
-      } catch(IOException e) {
-
-          return null;
+          System.out.println(e.getMessage());
       }
+
+      return null;
   }
 
 
