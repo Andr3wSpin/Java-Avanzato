@@ -17,7 +17,7 @@ public class TestStream {
                 (a,b) -> a.getDenominazione().compareTo(b.getDenominazione())).toList();
 
         System.out.println("Elenco ordinato afabeticamente:");
-        stampaCollection(elencoOrdinato);
+     //   stampaCollection(elencoOrdinato);
 
         Set<String> comuni = elenco.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
 //        System.out.println("Lista dei comuni che ospitanto agriturismi:");
@@ -31,19 +31,19 @@ public class TestStream {
 
         //aggironi i valori del campeggio
 
-              elenco.stream().filter(  f ->  f.getPostiRoulotte()>0 || f.getPostiTenda()>0 ).forEach(
+       List<Agriturismo> campeggi =       elenco.stream().filter(  f ->  f.getPostiRoulotte()>0 || f.getPostiTenda()>0 ).map( agriturismo -> {
+                agriturismo.setCamping(true);
+                    return agriturismo;   }).collect(Collectors.toList());
 
-                agriturismo -> agriturismo.setCamping(true)
-        );
+
+        //System.out.println(campeggi);
 
               //aggiorno pernottamneto
 
-        elenco.stream().filter(  f ->  f.getPostiLetto()>0 ).forEach(
-
-                agriturismo -> agriturismo.setPernottamento(true)
-        );
-
-      
+        List<Agriturismo> elencoAggiornato  =       elenco.stream().filter(  f ->  f.getPostiLetto()>0 ).map( agriturismo -> {
+            agriturismo.setPernottamento(true);
+            return agriturismo;   }).collect(Collectors.toList());
+        //System.out.println(elencoAggiornato);
     }
 
     private static void stampaCollection(Collection<?> collezione) {
