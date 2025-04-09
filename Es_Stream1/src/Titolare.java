@@ -10,6 +10,6 @@ public record Titolare(String nome, String cognome, String mail) {
     @Override
     public String toString() {
 
-        return "Nome: " + nome + " - Cognome: " + cognome + " - Reacapito: " + mail;
+        return cognome + " " + nome + ", recapito: " + mail;
     }
 }

@@ -10,13 +10,18 @@ public class TestStream {
 
         List<Agriturismo> elenco = ElencoAgriturismi.carica("Agriturismi-Benevento.csv");
 
-        System.out.println("Lista agriturismi:");
-        stampaCollection(elenco);
+//        System.out.println("Lista agriturismi:");
+//        stampaCollection(elenco);
 
+        List<Agriturismo> elencoOrdinato = elenco.stream().sorted(
+                (a,b) -> a.getDenominazione().compareTo(b.getDenominazione())).toList();
+
+        System.out.println("Elenco ordinato afabeticamente:");
+        stampaCollection(elencoOrdinato);
         //Map<String, Integer> postiXcomune =  elencoAgriturismi.stream().map(Agriturismo ::getComune);
         Set<String> comuni = elenco.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
-        System.out.println("Lista dei comuni che ospitanto agriturismi:");
-        stampaCollection(comuni);
+//        System.out.println("Lista dei comuni che ospitanto agriturismi:");
+//        stampaCollection(comuni);
        // System.out.println(elencoAgriturismi);
 
         Map<String, Integer> postiXcomune =  elenco.stream().collect( Collectors.groupingBy(
