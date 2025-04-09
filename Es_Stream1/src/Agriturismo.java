@@ -2,18 +2,17 @@ import java.util.Objects;
 
 public class Agriturismo   {
     private String comune;
-    private String titolare;
+    private Titolare titolare;
     private String denominazione;
     private String indirizzo;
     private int postiLetto;
     private int postiMacchina;
     private int postiTenda;
     private int postiRoulotte;
-    private String recapito;
     private boolean pernottamento;
     private boolean camping;
 
-    public Agriturismo(String comune, String titolare, String denominazione, String indirizzo, int postiLetto, int postiMacchina, int postiTenda, int postiRoulotte, String recapito) {
+    public Agriturismo(String comune, Titolare titolare, String denominazione, String indirizzo, int postiLetto, int postiMacchina, int postiTenda, int postiRoulotte) {
         this.comune = comune;
 
         this.titolare = titolare;
@@ -30,15 +29,9 @@ public class Agriturismo   {
 
         this.postiRoulotte = postiRoulotte;
 
-        this.recapito = recapito;
-        if(postiLetto>0)
-            this.pernottamento = true;
-        else
-            this.pernottamento = false;
-        if(postiRoulotte>0)
-            this.camping = true;
-        else
-            this.camping = false;
+        this.pernottamento = false;
+
+        this.camping = false;
     }
 
     public String getComune() {
@@ -49,11 +42,11 @@ public class Agriturismo   {
         this.comune = comune;
     }
 
-    public String getTitolare() {
+    public Titolare getTitolare() {
         return titolare;
     }
 
-    public void setTitolare(String titolare) {
+    public void setTitolare(Titolare titolare) {
         this.titolare = titolare;
     }
 
@@ -117,14 +110,6 @@ public class Agriturismo   {
         this.camping = camping;
     }
 
-    public String getRecapito() {
-        return recapito;
-    }
-
-    public void setRecapito(String recapito) {
-        this.recapito = recapito;
-    }
-
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
@@ -138,7 +123,6 @@ public class Agriturismo   {
             sb.append("Disponibili " + postiTenda + " posti tenda.\n");
         if(postiRoulotte > 0)
             sb.append("Disponibili " + postiRoulotte + " posti roulotte.\n");
-        sb.append(recapito + "\n");
 
         return sb.toString();
     }

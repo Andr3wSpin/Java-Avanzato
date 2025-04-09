@@ -90,12 +90,13 @@ public class ElencoAgriturismi {
 
       try(Stream<String> lines = Files.lines(filePath)) {
 
-         return lines.map(l -> {
+         return lines.skip(1).map(l -> {
 
              String[] campi = l.split(";");
 
              String comuneAzienda = campi[0];
-             String titolare = campi[1];
+             String nomeTitolare = campi[1].split(" ")[1];
+             String cognomeTitolare = campi[1].split(" ")[0];
              String denominazioneAzienda = campi[2];
              String indirizzoAzienda = campi[3];
              int postiLetto = campi[4].isEmpty() ? 0 : Integer.parseInt(campi[4]);
@@ -103,9 +104,10 @@ public class ElencoAgriturismi {
              int postiTenda = campi[6].isEmpty() ? 0 : Integer.parseInt(campi[6]);
              int postiRoulotte = campi[7].isEmpty() ? 0 : Integer.parseInt(campi[7]);
              String recapiti = campi[8];
+             Titolare titolare = new Titolare(nomeTitolare, cognomeTitolare, recapiti);
 
             return new Agriturismo(comuneAzienda, titolare, denominazioneAzienda,
-                     indirizzoAzienda, postiLetto, postiMacchina, postiTenda, postiRoulotte, recapiti);
+                     indirizzoAzienda, postiLetto, postiMacchina, postiTenda, postiRoulotte);
          }).toList();
 
       } catch (IOException e) {

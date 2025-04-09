@@ -1,4 +1,5 @@
 
+import java.util.List;
 import java.util.Map;
 
 import java.util.Set;
@@ -9,21 +10,20 @@ public class TestStream {
 
     public static void main(String[] args) {
 
-        ElencoAgriturismi elencoAgriturismi = ElencoAgriturismi.carica("Agriturismi-Benevento.csv");
+        List<Agriturismo> elenco = ElencoAgriturismi.carica("Agriturimi-Benevento.csv");
 
+        System.out.println(elenco);
 
-        System.out.println(elencoAgriturismi);
-
-
+/*
         //Map<String, Integer> postiXcomune =  elencoAgriturismi.stream().map(Agriturismo ::getComune);
-        Set<?> comuni = elencoAgriturismi.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
+        Set<?> comuni = elenco.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
         System.out.println(comuni.toString());
        // System.out.println(elencoAgriturismi);
 
-        Map<String, Integer> postiXcomune =  elencoAgriturismi.stream().collect( Collectors.groupingBy(
+        Map<String, Integer> postiXcomune =  elenco.stream().collect( Collectors.groupingBy(
                    Agriturismo::getComune,
                    Collectors.summingInt(Agriturismo::getPostiLetto)
                                                              ));
-
+*/
     }
 }
