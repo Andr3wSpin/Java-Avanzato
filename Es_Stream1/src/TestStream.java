@@ -18,7 +18,7 @@ public class TestStream {
 
         System.out.println("Elenco ordinato afabeticamente:");
         stampaCollection(elencoOrdinato);
-        //Map<String, Integer> postiXcomune =  elencoAgriturismi.stream().map(Agriturismo ::getComune);
+
         Set<String> comuni = elenco.stream().map(Agriturismo::getComune).collect(Collectors.toSet());
 //        System.out.println("Lista dei comuni che ospitanto agriturismi:");
 //        stampaCollection(comuni);

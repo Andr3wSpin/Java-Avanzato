@@ -110,6 +110,8 @@ public class Agriturismo   {
         this.camping = camping;
     }
 
+    public  int getPostiCamping(){ return (postiRoulotte + postiTenda);  }
+
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
