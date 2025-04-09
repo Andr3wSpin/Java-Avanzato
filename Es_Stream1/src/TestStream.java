@@ -28,6 +28,22 @@ public class TestStream {
                    Agriturismo::getComune,
                    Collectors.summingInt(Agriturismo::getPostiLetto)
                                                              ));
+
+        //aggironi i valori del campeggio
+
+              elenco.stream().filter(  f ->  f.getPostiRoulotte()>0 || f.getPostiTenda()>0 ).forEach(
+
+                agriturismo -> agriturismo.setCamping(true)
+        );
+
+              //aggiorno pernottamneto
+
+        elenco.stream().filter(  f ->  f.getPostiLetto()>0 ).forEach(
+
+                agriturismo -> agriturismo.setPernottamento(true)
+        );
+
+      
     }
 
     private static void stampaCollection(Collection<?> collezione) {

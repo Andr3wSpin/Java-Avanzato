@@ -13,7 +13,7 @@ public class Prova {
 
           Map<String,Double> postiCamping = elenco.stream().filter( f-> (f.isCamping()== true) ).collect(Collectors.groupingBy(
                       Agriturismo::getComune, Collectors.averagingInt(Agriturismo::getPostiCamping))
-                  
+
                                          );
 
 
