@@ -1,23 +1,17 @@
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class ElencoAgriturismi {
 
@@ -90,34 +84,32 @@ public class ElencoAgriturismi {
 
       try(Stream<String> lines = Files.lines(filePath)) {
 
-         return lines.skip(1).map(l -> {
-
-             String[] campi = l.split(";");
-
-             String comuneAzienda = campi[0];
-             String nomeTitolare = campi[1].split(" ")[1];
-             String cognomeTitolare = campi[1].split(" ")[0];
-             String denominazioneAzienda = campi[2];
-             String indirizzoAzienda = campi[3];
-             int postiLetto = campi[4].isEmpty() ? 0 : Integer.parseInt(campi[4]);
-             int postiMacchina = campi[5].isEmpty() ? 0 : Integer.parseInt(campi[5]);
-             int postiTenda = campi[6].isEmpty() ? 0 : Integer.parseInt(campi[6]);
-             int postiRoulotte = campi[7].isEmpty() ? 0 : Integer.parseInt(campi[7]);
-             String recapiti = campi[8];
-             Titolare titolare = new Titolare(nomeTitolare, cognomeTitolare, recapiti);
-
-            return new Agriturismo(comuneAzienda, titolare, denominazioneAzienda,
-                     indirizzoAzienda, postiLetto, postiMacchina, postiTenda, postiRoulotte);
-         }).toList();
-
+        return lines.skip(1).map(ElencoAgriturismi::creaAgriturismo).toList();
       } catch (IOException e) {
 
-          System.out.println(e.getMessage());
+          return null;
       }
-
-      return null;
   }
 
+  public static Agriturismo creaAgriturismo(String riga) {
+
+      String[] campi = riga.split(";");
+
+      String comuneAzienda = campi[0];
+      String nomeTitolare = campi[1].split(" ")[1];
+      String cognomeTitolare = campi[1].split(" ")[0];
+      String denominazioneAzienda = campi[2];
+      String indirizzoAzienda = campi[3];
+      int postiLetto = campi[4].isEmpty() ? 0 : Integer.parseInt(campi[4]);
+      int postiMacchina = campi[5].isEmpty() ? 0 : Integer.parseInt(campi[5]);
+      int postiTenda = campi[6].isEmpty() ? 0 : Integer.parseInt(campi[6]);
+      int postiRoulotte = campi[7].isEmpty() ? 0 : Integer.parseInt(campi[7]);
+      String recapiti = campi[8];
+      Titolare titolare = new Titolare(nomeTitolare, cognomeTitolare, recapiti);
+
+      return new Agriturismo(comuneAzienda, titolare, denominazioneAzienda,
+              indirizzoAzienda, postiLetto, postiMacchina, postiTenda, postiRoulotte);
+  }
 
   @Override
   public String toString() {
