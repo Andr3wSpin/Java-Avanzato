@@ -1,7 +1,4 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TestStream {
@@ -23,6 +20,10 @@ public class TestStream {
 //        System.out.println("Lista dei comuni che ospitanto agriturismi:");
 //        stampaCollection(comuni);
        // System.out.println(elencoAgriturismi);
+
+        //indicare il comune con piu posti campeggio
+
+
 
         Map<String, Integer> postiXcomune =  elenco.stream().collect( Collectors.groupingBy(
                    Agriturismo::getComune,
