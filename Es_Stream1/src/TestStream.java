@@ -42,7 +42,7 @@ public class TestStream {
                 agriturismo.getPostiCamping()>agriturismo2.getPostiCamping() ? agriturismo : agriturismo2
         ).map(Agriturismo::getComune);
 
-
+       // System.out.println(ComuneMaxPosti.get());
 
         //mappa comune e numero posti letto
         Map<String, Integer> postiXcomune =  elenco.stream().collect( Collectors.groupingBy(
@@ -50,7 +50,7 @@ public class TestStream {
                 Collectors.summingInt(Agriturismo::getPostiLetto)
         ));
 
-
+      //  System.out.println(postiXcomune);
         // crea una mappa nome Comune numeroPosti camping
         Map<String,Double> postiCamping = campeggi.stream().collect(Collectors.groupingBy(
                 Agriturismo::getComune, Collectors.averagingInt(Agriturismo::getPostiCamping))
@@ -62,7 +62,7 @@ public class TestStream {
 //        System.out.println("Lista dei comuni che ospitanto agriturismi:");
 //        stampaCollection(comuni);
        // System.out.println(elencoAgriturismi);
-        
+
 
     }
 
