@@ -65,17 +65,10 @@ public class MyStudentListViewController implements Initializable {
     private TextField searchBar;
     
     private ObservableList<Studente> studenti;
-<<<<<<< HEAD
-    
-    
 
-   
-    
-=======
 
     private FilteredList<Studente> listaFiltrata;
 
->>>>>>> cd948547afcb0bd7eec87539b0c492449d37cf09
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -85,19 +78,15 @@ public class MyStudentListViewController implements Initializable {
         codeClm.setCellValueFactory(new PropertyValueFactory("matricola"));
         
         nameClm.setCellFactory(TextFieldTableCell.forTableColumn());
-<<<<<<< HEAD
+
         
        
         
         studenti = FXCollections.observableArrayList();
          
-      
-        
-=======
 
         studenti = FXCollections.observableArrayList();
 
->>>>>>> cd948547afcb0bd7eec87539b0c492449d37cf09
         studentTable.setItems(studenti);
 
         // TODO
