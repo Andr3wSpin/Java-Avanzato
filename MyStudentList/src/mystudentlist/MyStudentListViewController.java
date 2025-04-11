@@ -14,9 +14,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.sun.xml.internal.ws.api.client.SelectOptimalEncodingFeature;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,8 +39,7 @@ import javafx.stage.FileChooser;
  * @author lucagreco
  */
 public class MyStudentListViewController implements Initializable {
-    
-    
+
     @FXML
     private MenuItem saveButton;
     @FXML
@@ -55,11 +58,13 @@ public class MyStudentListViewController implements Initializable {
     private TableColumn<Studente, String> surnameClm;
     @FXML
     private TableColumn<Studente, String> codeClm;
+    @FXML
+    private TextField searchBar;
     
     private ObservableList<Studente> studenti;
-    
-   
-    
+
+    private FilteredList<Studente> listaFiltrata;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -69,39 +74,35 @@ public class MyStudentListViewController implements Initializable {
         codeClm.setCellValueFactory(new PropertyValueFactory("matricola"));
         
         nameClm.setCellFactory(TextFieldTableCell.forTableColumn());
-        
-        
-        
+
         studenti = FXCollections.observableArrayList();
-        
-      
-        
+
         studentTable.setItems(studenti);
-        
-        
-        
+
         // TODO
+        listaFiltrata = new FilteredList<>(studenti);
+
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            listaFiltrata.setPredicate(studente ->
+                    studente.getNome().toLowerCase().startsWith(newValue.toLowerCase()) ||
+                            studente.getCognome().toLowerCase().startsWith(newValue.toLowerCase()) ||
+                            studente.getMatricola().toLowerCase().startsWith(newValue.toLowerCase()));
+        });
+
+        studentTable.setItems(listaFiltrata);
     }
 
     private void initItems() {
-    
-    
+
         studenti.add(new Studente("Mario", "Rossi", "06127001"));
         studenti.add(new Studente("Ernesto", "Rossi", "06127002"));
         studenti.add(new Studente("Davide", "Rossi", "06127003"));
-    
     }
 
     @FXML
     private void openFile(ActionEvent event) {
         
         FileChooser fc = new FileChooser();
-        
-        
-        
-        
-        
-        
     }
 
     @FXML
@@ -121,25 +122,11 @@ public class MyStudentListViewController implements Initializable {
                     pw.append(s.getNome() + ';');
                     pw.append(s.getCognome() + ';');
                     pw.append(s.getMatricola() + '\n');
-                    
-                    
-                
-                
                 }
-                
-            
-            
             } catch (IOException ex) {
                 Logger.getLogger(MyStudentListViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        
-        
-        } 
-        
-        
-        
-       
+        }
     }
 
     @FXML
@@ -160,8 +147,6 @@ public class MyStudentListViewController implements Initializable {
         Studente s = studentTable.getSelectionModel().getSelectedItem();
         
         studenti.remove(s);
-        
-        
     }
 
     @FXML
@@ -170,8 +155,5 @@ public class MyStudentListViewController implements Initializable {
         Studente s = studentTable.getSelectionModel().getSelectedItem();
         
         s.setNome(event.getNewValue());
-        
-        
     }
-    
 }
