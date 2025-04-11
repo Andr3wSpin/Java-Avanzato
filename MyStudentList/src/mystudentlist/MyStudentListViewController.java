@@ -15,6 +15,9 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.beans.binding.Binding;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.ObjectBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -58,6 +61,8 @@ public class MyStudentListViewController implements Initializable {
     
     private ObservableList<Studente> studenti;
     
+    
+
    
     
     @Override
@@ -70,10 +75,10 @@ public class MyStudentListViewController implements Initializable {
         
         nameClm.setCellFactory(TextFieldTableCell.forTableColumn());
         
-        
+       
         
         studenti = FXCollections.observableArrayList();
-        
+         
       
         
         studentTable.setItems(studenti);
@@ -150,8 +155,22 @@ public class MyStudentListViewController implements Initializable {
 
     @FXML
     private void addStudent(ActionEvent event) {
+    ObjectBinding<String> intBinding = Bindings.createObjectBinding(() -> {
+    String matricola = codeField.getText();
+    if(matricola != null && matricola.matches("\\d+"))
+        return matricola;
+    else
+        return null;
+    
+    }
+        ,codeField.textProperty()
+    );
+    
+    if (nameField.getText() == null || surnameField.getText() == null) return;
+    
         
-        studenti.add(new Studente(nameField.getText(), surnameField.getText(),codeField.getText()));
+    
+        studenti.add(new Studente(nameField.getText(), surnameField.getText(),intBinding.getValue()));
     }
 
     @FXML
