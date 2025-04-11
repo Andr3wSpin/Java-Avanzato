@@ -15,20 +15,16 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.sun.xml.internal.ws.api.client.SelectOptimalEncodingFeature;
 import javafx.application.Platform;
-import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -158,7 +154,7 @@ public class MyStudentListViewController implements Initializable {
         ,codeField.textProperty()
     );
     
-    if (nameField.getText() == null || surnameField.getText() == null) return;
+    if (intBinding.getValue() == null || nameField.getText().isEmpty() || surnameField.getText().isEmpty()) return;
     
         
     
