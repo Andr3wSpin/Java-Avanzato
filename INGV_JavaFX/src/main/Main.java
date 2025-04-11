@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMain.java to edit this template
  */
-package ingv_javafx;
+package main;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -16,25 +16,25 @@ import javafx.stage.Stage;
  *
  * @author andre
  */
-public class INGV_JavaFX extends Application {
-    
+public class Main extends Application {
+
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
-            
+
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
             }
         });
-        
+
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        
+
         Scene scene = new Scene(root, 300, 250);
-        
+
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -46,5 +46,5 @@ public class INGV_JavaFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
