@@ -23,6 +23,8 @@ public class INGVReport extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        stage.setTitle("INGV Report eventi sismici");
+        stage.setResizable(false);
         stage.show();
     }
 

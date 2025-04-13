@@ -3,6 +3,7 @@ package main;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,8 @@ public class CaricaReportService extends Service<List<INGEvent>> {
 
     private String url;
     private int limitEvent;
+    private LocalDate dataInizio;
+    private LocalDate dataFine;
 
     public CaricaReportService(String url, int limitEvent) {
         this.url = url;
@@ -35,6 +38,23 @@ public class CaricaReportService extends Service<List<INGEvent>> {
         this.limitEvent = limitEvent;
     }
 
+    public LocalDate getDataInizio() {
+        return dataInizio;
+    }
+
+    public void setDataInizio(LocalDate dataInizio) {
+        this.dataInizio = dataInizio;
+    }
+
+    public LocalDate getDataFine() {
+        return dataFine;
+    }
+
+    public void setDataFine(LocalDate dataFine) {
+        this.dataFine = dataFine;
+    }
+    
+
     @Override
     protected Task<List<INGEvent>> createTask() {
 
@@ -54,7 +74,10 @@ public class CaricaReportService extends Service<List<INGEvent>> {
 
                 while ((line = in.readLine()) != null && cnt < limitEvent) {
 
+                    
                     INGEvent e = creaEvento(line);
+                    
+                    if(e == null) continue;
                     
                     eventi.add(e);
                     
@@ -87,6 +110,10 @@ public class CaricaReportService extends Service<List<INGEvent>> {
         String eventLocation = campi[12];
         String eventType = campi[13];
 
+        LocalDate date = time.toLocalDate();
+        
+        if(date.compareTo(dataInizio) < 0 || date.compareTo(dataFine) > 0) return null;
+        
         return new INGEvent(
                         eventID, time, latitude, longitude, depth,
                         author, catalogue, contributor, contributorID,

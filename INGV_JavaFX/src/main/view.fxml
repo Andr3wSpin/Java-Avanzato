@@ -18,9 +18,9 @@
         <DatePicker fx:id="dataInizio" layoutX="126.0" layoutY="397.0" />
         <DatePicker fx:id="dataFine" layoutX="126.0" layoutY="466.0" />
         <Label layoutX="44.0" layoutY="402.0" text="Data inizio:" />
-        <Label layoutX="50.0" layoutY="471.0" text="Data fine:" />
+        <Label layoutX="44.0" layoutY="471.0" text="Data fine:" />
         <Label layoutX="436.0" layoutY="402.0" text="Limite risultati:" />
-        <TextField fx:id="limiteTxf" layoutX="567.0" layoutY="397.0" />
-        <Button fx:id="caricaBtn" layoutX="593.0" layoutY="482.0" mnemonicParsing="false" onAction="#caricaDati" text="ButtonCarica Dati" />
+        <TextField fx:id="limiteTxf" layoutX="567.0" layoutY="397.0" promptText="1000" />
+        <Button fx:id="caricaBtn" layoutX="50.0" layoutY="541.0" mnemonicParsing="false" onAction="#caricaDati" text="Carica Dati" />
     </children>
 </AnchorPane>
