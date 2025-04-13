@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package GUI;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,9 +17,9 @@ import javafx.scene.control.TextField;
 /**
  * FXML Controller class
  *
- * @author paolo
+ * @author andre
  */
-public class IGVNGui implements Initializable {
+public class Controller implements Initializable {
 
     @FXML
     private TableColumn<?, ?> dateColumn;
