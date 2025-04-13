@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="INGV_JavaFX">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/INGV_JavaFX.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

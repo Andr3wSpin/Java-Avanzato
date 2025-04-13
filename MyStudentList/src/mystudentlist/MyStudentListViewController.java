@@ -79,9 +79,6 @@ public class MyStudentListViewController implements Initializable {
        
         
         studenti = FXCollections.observableArrayList();
-         
-
-        studenti = FXCollections.observableArrayList();
 
         studentTable.setItems(studenti);
 

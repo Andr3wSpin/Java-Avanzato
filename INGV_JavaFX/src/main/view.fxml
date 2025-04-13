@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
     <children>
-        <TableView layoutX="278.0" layoutY="91.0" prefHeight="331.0" prefWidth="760.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <TableView fx:id="eventTable" layoutX="278.0" layoutY="91.0" prefHeight="331.0" prefWidth="760.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
             <columns>
                 <TableColumn fx:id="dateColumn" prefWidth="178.0" text="Date" />
                 <TableColumn fx:id="magnitudeColumn" prefWidth="156.0" text="Magnitude" />

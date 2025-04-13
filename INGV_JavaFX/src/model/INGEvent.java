@@ -1,157 +1,171 @@
 package main;
 
-
-
 import java.time.LocalDateTime;
 
 public class INGEvent {
 
-    private int EventID;
-    private LocalDateTime Time;
-    private double Latidutne;
-    private double Longitudine;
-    private double Depth;
-    private String Author;
-    private String Catalog;
-    private String Contributor;
-    private float ContributorID;
-    private String MagType;
-    private int Magnitude;
-    private char MagAuthor;
-    private String EventLocationName;
-    private String EventType;
+    private String eventID;
+    private LocalDateTime time;
+    private double latitude;
+    private double longitude;
+    private double depth;
+    private String author;
+    private String catalog;
+    private String contributor;
+    private String contributorID;
+    private String magType;
+    private double magnitude;
+    private String magAuthor;
+    private String eventLocationName;
+    private String eventType;
 
-
-    public INGEvent(LocalDateTime time, int eventID, double latidutne, double longitudine, double depth, String author, String catalog, String contributor, float contributorID, String magType, int magnitude, char magAuthor, String eventLocationName, String eventType) {
-        Time = time;
-        EventID = eventID;
-        Latidutne = latidutne;
-        Longitudine = longitudine;
-        Depth = depth;
-        Author = author;
-        Catalog = catalog;
-        Contributor = contributor;
-        ContributorID = contributorID;
-        MagType = magType;
-        Magnitude = magnitude;
-        MagAuthor = magAuthor;
-        EventLocationName = eventLocationName;
-        EventType = eventType;
+    public INGEvent(String eventID, LocalDateTime time, double latitude, double longitude, double depth, String author, String catalog, String contributor, String contributorID, String magType, double magnitude, String magAuthor, String eventLocationName, String eventType) {
+        this.eventID = eventID;
+        this.time = time;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.depth = depth;
+        this.author = author;
+        this.catalog = catalog;
+        this.contributor = contributor;
+        this.contributorID = contributorID;
+        this.magType = magType;
+        this.magnitude = magnitude;
+        this.magAuthor = magAuthor;
+        this.eventLocationName = eventLocationName;
+        this.eventType = eventType;
     }
 
+    public String getEventID() {
+        return eventID;
+    }
+
+    public void setEventID(String eventID) {
+        this.eventID = eventID;
+    }
 
     public LocalDateTime getTime() {
-        return Time;
+        return time;
     }
 
     public void setTime(LocalDateTime time) {
-        Time = time;
+        this.time = time;
     }
 
-    public int getEventID() {
-        return EventID;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setEventID(int eventID) {
-        EventID = eventID;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
-    public double getLatidutne() {
-        return Latidutne;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setLatidutne(double latidutne) {
-        Latidutne = latidutne;
-    }
-
-    public double getLongitudine() {
-        return Longitudine;
-    }
-
-    public void setLongitudine(double longitudine) {
-        Longitudine = longitudine;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public double getDepth() {
-        return Depth;
+        return depth;
     }
 
     public void setDepth(double depth) {
-        Depth = depth;
+        this.depth = depth;
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 
     public String getCatalog() {
-        return Catalog;
+        return catalog;
     }
 
     public void setCatalog(String catalog) {
-        Catalog = catalog;
+        this.catalog = catalog;
     }
 
     public String getContributor() {
-        return Contributor;
+        return contributor;
     }
 
     public void setContributor(String contributor) {
-        Contributor = contributor;
+        this.contributor = contributor;
     }
 
-    public float getContributorID() {
-        return ContributorID;
+    public String getContributorID() {
+        return contributorID;
     }
 
-    public void setContributorID(float contributorID) {
-        ContributorID = contributorID;
+    public void setContributorID(String contributorID) {
+        this.contributorID = contributorID;
     }
 
     public String getMagType() {
-        return MagType;
+        return magType;
     }
 
     public void setMagType(String magType) {
-        MagType = magType;
+        this.magType = magType;
     }
 
-    public int getMagnitude() {
-        return Magnitude;
+    public double getMagnitude() {
+        return magnitude;
     }
 
-    public void setMagnitude(int magnitude) {
-        Magnitude = magnitude;
+    public void setMagnitude(double magnitude) {
+        this.magnitude = magnitude;
     }
 
-    public char getMagAuthor() {
-        return MagAuthor;
+    public String getMagAuthor() {
+        return magAuthor;
     }
 
-    public void setMagAuthor(char magAuthor) {
-        MagAuthor = magAuthor;
+    public void setMagAuthor(String magAuthor) {
+        this.magAuthor = magAuthor;
     }
 
     public String getEventLocationName() {
-        return EventLocationName;
+        return eventLocationName;
     }
 
     public void setEventLocationName(String eventLocationName) {
-        EventLocationName = eventLocationName;
+        this.eventLocationName = eventLocationName;
     }
 
     public String getEventType() {
-        return EventType;
+        return eventType;
     }
 
     public void setEventType(String eventType) {
-        EventType = eventType;
+        this.eventType = eventType;
     }
 
-
+    @Override
+public String toString() {
+    return "INGEvent {" +
+           "\n  eventID            = " + eventID +
+           "\n  time               = " + time +
+           "\n  latitude           = " + latitude +
+           "\n  longitude          = " + longitude +
+           "\n  depth              = " + depth +
+           "\n  author             = " + author +
+           "\n  catalog            = " + catalog +
+           "\n  contributor        = " + contributor +
+           "\n  contributorID      = " + contributorID +
+           "\n  magType            = " + magType +
+           "\n  magnitude          = " + magnitude +
+           "\n  magAuthor          = " + magAuthor +
+           "\n  eventLocationName  = " + eventLocationName +
+           "\n  eventType          = " + eventType +
+           "\n}";
+}
 
 }
