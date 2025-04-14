@@ -152,6 +152,9 @@ public class Controller implements Initializable {
                 pw.append(evento.getEventLocationName() + "\n");
             }
             
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Gli eventi sono stati esportati.");
+            alert.showAndWait();
         } catch(IOException e) {
             
             alert.setContentText("Errore durante l'esportazione degli eventi selezionati!");
