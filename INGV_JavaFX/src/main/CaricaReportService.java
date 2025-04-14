@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
@@ -63,28 +64,13 @@ public class CaricaReportService extends Service<List<INGEvent>> {
             protected List<INGEvent> call() throws Exception {
 
                 URL u = new URL(url);
-                List<INGEvent> eventi = new ArrayList<>();
+                List<INGEvent> eventi;
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(u.openStream()));
-
-                String line;
-                int cnt = 0;
-
-                line = in.readLine();
-
-                while ((line = in.readLine()) != null && cnt < limitEvent) {
-
-                    
-                    INGEvent e = creaEvento(line);
-                    
-                    if(e == null) continue;
-                    
-                    eventi.add(e);
-                    
-                    cnt++;
-                }
-
-                in.close();
+                  in.readLine();
+                  eventi = in.lines().map(f -> creaEvento(f)  ).filter(f-> 
+                          !f.getTime().toLocalDate().isAfter(dataFine) && !f.getTime().toLocalDate().isBefore(dataInizio))
+                          .limit(limitEvent).collect(Collectors.toList());
 
                 return eventi;
             }
@@ -110,9 +96,7 @@ public class CaricaReportService extends Service<List<INGEvent>> {
         String eventLocation = campi[12];
         String eventType = campi[13];
 
-        LocalDate date = time.toLocalDate();
         
-        if(date.compareTo(dataInizio) < 0 || date.compareTo(dataFine) > 0) return null;
         
         return new INGEvent(
                         eventID, time, latitude, longitude, depth,
