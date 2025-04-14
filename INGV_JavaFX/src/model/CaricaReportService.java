@@ -1,4 +1,4 @@
-package main;
+package model;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,9 +18,8 @@ public class CaricaReportService extends Service<List<INGEvent>> {
     private LocalDate dataInizio;
     private LocalDate dataFine;
 
-    public CaricaReportService(String url, int limitEvent) {
+    public CaricaReportService(String url) {
         this.url = url;
-        this.limitEvent = limitEvent;
     }
 
     public String getUrl() {
@@ -55,7 +54,6 @@ public class CaricaReportService extends Service<List<INGEvent>> {
         this.dataFine = dataFine;
     }
     
-
     @Override
     protected Task<List<INGEvent>> createTask() {
 
@@ -96,8 +94,6 @@ public class CaricaReportService extends Service<List<INGEvent>> {
         String eventLocation = campi[12];
         String eventType = campi[13];
 
-        
-        
         return new INGEvent(
                         eventID, time, latitude, longitude, depth,
                         author, catalogue, contributor, contributorID,
