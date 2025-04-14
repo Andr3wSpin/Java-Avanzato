@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
 import main.CaricaReportService;
 import main.INGEvent;
 
@@ -41,11 +43,36 @@ public class Controller implements Initializable {
     private Button caricaBtn;
     
     private ObservableList obList;
+    private FilteredList<INGEvent> fList;
+    @FXML
+    private TextField serchBar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        
         inizializzaLimiteTxf();
+        serchBar.textProperty().addListener((obs,oldVal,newVal) -> {
+        
+          fList.setPredicate( filtro -> {
+          
+          if(newVal == null || newVal.isEmpty()){
+          return true;
+          }
+          
+          String ricerca = newVal.toLowerCase();
+          if(filtro.getEventLocationName().toLowerCase().contains(ricerca)) return true;
+           if(filtro.getTime().toString().toLowerCase().contains(ricerca)) return true;
+           if(String.valueOf(filtro.getMagnitude()).toLowerCase().contains(ricerca)) return true;
+          
+          
+          return false;
+          });
+          
+        
+        
+        });
+        
     }
 
     @FXML
@@ -96,8 +123,8 @@ public class Controller implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory("time"));
         magnitudeColumn.setCellValueFactory(new PropertyValueFactory("magnitude"));
         locationColumn.setCellValueFactory(new PropertyValueFactory("eventLocationName"));
-        
-        eventTable.setItems(obList);
+        fList = new FilteredList (obList,b->true);
+        eventTable.setItems(fList);
     }
 
     private void inizializzaLimiteTxf() {
@@ -115,4 +142,7 @@ public class Controller implements Initializable {
             .otherwise("")
         );
     }
+
+   
+
 }
