@@ -1,0 +1,11 @@
+classi\Client.class
+classi\NetworkConnection$ConnectionThread.class
+mychat\mychatfx\controller\MenuServerController.class
+mychat\mychatfx\App.class
+classi\Main.class
+mychat\mychatfx\controller\MenuChatController.class
+mychat\mychatfx\controller\MenuPrincipaleController.class
+mychat\mychatfx\controller\MenuClientController.class
+classi\NetworkConnection$1.class
+classi\NetworkConnection.class
+classi\Server.class
