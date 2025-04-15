@@ -3,7 +3,7 @@ package mychat.mychatfx;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
-public class PrimaryController {
+public class MenuPrincipaleController {
 
     @FXML
     private void switchToSecondary() throws IOException {
