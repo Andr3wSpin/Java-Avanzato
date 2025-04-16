@@ -8,4 +8,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 public class MenuChatController {
+
+    @FXML
+    private TextArea textArea;
+    @FXML
+    private TextField msgTXF;
+    @FXML
+    private Button btnSend;
+
+    @FXML
+    private void sendMSGKey(KeyEvent event) {
+    }
+
+    @FXML
+    private void sendMSGbtn(ActionEvent event) {
+    }
 }
