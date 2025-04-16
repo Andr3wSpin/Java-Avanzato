@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -64,6 +65,8 @@ public class Controller implements Initializable {
     
     private String url;
     private CaricaReportService crs;
+    @FXML
+    private ProgressBar caricamentoDati;
     
     
     @Override
@@ -107,13 +110,16 @@ public class Controller implements Initializable {
         crs.setDataFine(df);
         crs.setLimitEvent(limiteEventi);
         
+        caricamentoDati.setVisible(true);
+        caricamentoDati.progressProperty().bind(crs.progressProperty());
+        
         crs.setOnSucceeded(e -> {
             List<INGEvent> eventi = crs.getValue();
             
             obList.setAll(eventi);
             
             eventTable.setItems(fList);
-            
+            caricamentoDati.setVisible(false);
             crs.reset();
         });
 

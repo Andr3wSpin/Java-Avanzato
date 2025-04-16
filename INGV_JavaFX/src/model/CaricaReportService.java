@@ -63,13 +63,17 @@ public class CaricaReportService extends Service<List<INGEvent>> {
 
                 URL u = new URL(url);
                 List<INGEvent> eventi;
-
+              
                 BufferedReader in = new BufferedReader(new InputStreamReader(u.openStream()));
                   in.readLine();
-                  eventi = in.lines().map(f -> creaEvento(f)  ).filter(f-> 
+                  eventi = in.lines().map(f -> {
+                                             
+                                               INGEvent evento = creaEvento(f) ;
+                                               return evento;
+                                                                   }).filter(f-> 
                           !f.getTime().toLocalDate().isAfter(dataFine) && !f.getTime().toLocalDate().isBefore(dataInizio))
                           .limit(limitEvent).collect(Collectors.toList());
-
+                     
                 return eventi;
             }
         };
