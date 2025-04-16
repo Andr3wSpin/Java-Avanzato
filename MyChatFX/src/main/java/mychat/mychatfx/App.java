@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("MenuPrincipale.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MenuChat.fxml"));
         
         Scene scene = new Scene(root);
         

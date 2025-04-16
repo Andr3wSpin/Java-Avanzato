@@ -18,8 +18,11 @@
                <padding>
                   <Insets right="30.0" />
                </padding>
+               <toggleGroup>
+                  <ToggleGroup fx:id="mode" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="clientBtn" mnemonicParsing="false" text="Client" />
+            <RadioButton fx:id="clientBtn" mnemonicParsing="false" text="Client" toggleGroup="$mode" />
          </children>
       </HBox>
    </children>

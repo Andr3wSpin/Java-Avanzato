@@ -1,15 +1,19 @@
 package mychat.mychatfx.controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
-public class MenuPrincipaleController {
+public class MenuPrincipaleController implements Initializable {
 
     @FXML
     private Label label;
@@ -26,8 +30,9 @@ public class MenuPrincipaleController {
     @FXML
     private RadioButton clientBtn;
 
-    private void switchToSecondary() throws IOException {
-        //App.setRoot("secondary");
-    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
+
+    }
 }

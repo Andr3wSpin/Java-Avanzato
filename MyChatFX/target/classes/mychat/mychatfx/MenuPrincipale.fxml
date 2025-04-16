@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -11,7 +12,18 @@
       <Label fx:id="portaLbl" layoutX="176.0" layoutY="283.0" text="Porta:" />
       <TextField fx:id="ipTf" layoutX="233.0" layoutY="202.0" />
       <TextField fx:id="portaTf" layoutX="233.0" layoutY="278.0" />
-      <RadioButton layoutX="294.0" layoutY="119.0" mnemonicParsing="false" text="Server" />
-      <RadioButton layoutX="408.0" layoutY="119.0" mnemonicParsing="false" text="Client" />
+      <HBox layoutX="274.0" layoutY="118.0" prefHeight="21.0" prefWidth="200.0">
+         <children>
+            <RadioButton fx:id="serverBtn" mnemonicParsing="false" text="Server">
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+               <toggleGroup>
+                  <ToggleGroup fx:id="mode" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="clientBtn" mnemonicParsing="false" text="Client" toggleGroup="$mode" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
