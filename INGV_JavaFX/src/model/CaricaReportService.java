@@ -64,8 +64,11 @@ public class CaricaReportService extends Service<List<INGEvent>> {
             protected List<INGEvent> call() throws Exception {
 
                 URL u = new URL(url);
+                
                 List<INGEvent> eventi;
-              int[] i={0};
+                
+              int[] i = {0};
+              
                 BufferedReader in = new BufferedReader(new InputStreamReader(u.openStream()));
                   in.readLine();
                   eventi = in.lines().map(f -> {
@@ -82,7 +85,7 @@ public class CaricaReportService extends Service<List<INGEvent>> {
                                                                    }).filter(f-> 
                           !f.getTime().toLocalDate().isAfter(dataFine) && !f.getTime().toLocalDate().isBefore(dataInizio))
                           .limit(limitEvent).collect(Collectors.toList());
-             updateProgress(1,1);
+                updateProgress(1,1);
                 try {
                         Thread.sleep(100);
                     } catch (InterruptedException ex) {

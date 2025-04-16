@@ -60,21 +60,25 @@ public class Controller implements Initializable {
     private ContextMenu contextMenu;
     @FXML
     private MenuItem esportaBtn;
+    @FXML
+    private ProgressBar caricamentoDati;
+    @FXML
+    private Label percentuale;
     
+    private ProgressIndicator pi;
     private ObservableList obList;
     private FilteredList<INGEvent> fList;
     private Alert alert;
     
     private String url;
     private CaricaReportService crs;
-    @FXML
-    private ProgressBar caricamentoDati;
-    @FXML
-    private Label percentuale;
+    
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
+        pi = new ProgressIndicator();
         
         this.url = "https://webservices.ingv.it/fdsnws/event/1/query?starttime=2020-11-18T00%3A00%3A00&endtime=" +
                 "2020-11-25T23%3A59%3A59&minmag=2&maxmag=10&mindepth=-10&maxdepth=1000&minlat=-90&maxlat=" +
@@ -89,7 +93,8 @@ public class Controller implements Initializable {
         
         inizializzaLimiteTxf();
         inizializzaTabella();
-        inizializzaSearchBar(); 
+        inizializzaSearchBar();
+        inizializzaCaricamento();
     }
 
     @FXML
@@ -113,9 +118,6 @@ public class Controller implements Initializable {
         crs.setDataInizio(di);
         crs.setDataFine(df);
         crs.setLimitEvent(limiteEventi);
-     
-        caricamentoDati.setVisible(true);
-        caricamentoDati.progressProperty().bind(crs.progressProperty());
         
         crs.setOnSucceeded(e -> {
             List<INGEvent> eventi = crs.getValue();
@@ -123,7 +125,9 @@ public class Controller implements Initializable {
             obList.setAll(eventi);
             
             eventTable.setItems(fList);
-            caricamentoDati.setVisible(false);
+            
+            pi.setVisible(false);
+            
             crs.reset();
         });
 
@@ -214,5 +218,22 @@ public class Controller implements Initializable {
             return false;
           });
         }); 
+    }
+
+    private void inizializzaCaricamento() {
+        
+        pi.progressProperty().bind(crs.progressProperty());
+        
+        caricamentoDati.visibleProperty().bind(pi.progressProperty().greaterThan(0.0));
+        caricamentoDati.progressProperty().bind(pi.progressProperty());
+        
+        percentuale.visibleProperty().bind(pi.progressProperty().greaterThan(0.0));
+        percentuale.textProperty().bind(
+    Bindings.createStringBinding(
+        () -> "Caricamento dati: " + (int)(pi.getProgress() * 100) + "%",
+        pi.progressProperty()
+    )
+);
+
     }
 }
