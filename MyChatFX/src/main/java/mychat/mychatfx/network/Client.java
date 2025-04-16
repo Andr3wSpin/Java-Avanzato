@@ -1,4 +1,4 @@
-package classi;
+package mychat.mychatfx.network;
 
 import java.io.Serializable;
 import java.util.function.Consumer;
