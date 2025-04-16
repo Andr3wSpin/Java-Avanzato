@@ -9,6 +9,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -84,7 +85,7 @@ public class Controller implements Initializable {
                 "2020-11-25T23%3A59%3A59&minmag=2&maxmag=10&mindepth=-10&maxdepth=1000&minlat=-90&maxlat=" +
                      "90&minlon=-180&maxlon=180&minversion=100&orderby=time-asc&format=text&limit=10000";
         
-        crs = new CaricaReportService(this.url);
+     //   crs = new CaricaReportService(this.url);
 
         obList = FXCollections.observableArrayList();
         fList = new FilteredList (obList,b -> true);
@@ -94,12 +95,15 @@ public class Controller implements Initializable {
         inizializzaLimiteTxf();
         inizializzaTabella();
         inizializzaSearchBar();
-        inizializzaCaricamento();
+        Platform.runLater(() -> caricaBtn.requestFocus());
+       
     }
 
     @FXML
     private void caricaDati(ActionEvent event) {
 
+          crs = new CaricaReportService(this.url);
+           inizializzaCaricamento();
         LocalDate di = dataInizio.getValue();
         LocalDate df = dataFine.getValue();
         
@@ -234,6 +238,6 @@ public class Controller implements Initializable {
         pi.progressProperty()
     )
 );
-
+ 
     }
 }

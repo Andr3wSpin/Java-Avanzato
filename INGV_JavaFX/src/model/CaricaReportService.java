@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
@@ -73,24 +74,16 @@ public class CaricaReportService extends Service<List<INGEvent>> {
                   in.readLine();
                   eventi = in.lines().map(f -> {
                                     
-                  try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(CaricaReportService.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                 
                                                i[0]++;
-                                               updateProgress(i[0],50);
+                                             Platform.runLater(() -> updateProgress(i[0], 1));
                                                INGEvent evento = creaEvento(f) ;
                                                return evento;
                                                                    }).filter(f-> 
                           !f.getTime().toLocalDate().isAfter(dataFine) && !f.getTime().toLocalDate().isBefore(dataInizio))
                           .limit(limitEvent).collect(Collectors.toList());
-                updateProgress(1,1);
-                try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(CaricaReportService.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                Platform.runLater(() -> updateProgress(1, 1));
+            
                 return eventi;
             }
         };
