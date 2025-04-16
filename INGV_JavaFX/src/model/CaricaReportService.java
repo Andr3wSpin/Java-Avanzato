@@ -70,11 +70,7 @@ public class CaricaReportService extends Service<List<INGEvent>> {
                   in.readLine();
                   eventi = in.lines().map(f -> {
                                       //se l operazione è troppo breve i++ e inutile uso thread.sleep per vedere l effetto
-                                      try {
-                        Thread.sleep(50);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(CaricaReportService.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+               
                                                i[0]++;
                                                updateProgress(i[0],50);
                                                INGEvent evento = creaEvento(f) ;
