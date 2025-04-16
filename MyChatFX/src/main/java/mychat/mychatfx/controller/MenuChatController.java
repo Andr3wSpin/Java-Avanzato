@@ -12,15 +12,15 @@ public class MenuChatController {
     @FXML
     private TextArea textArea;
     @FXML
-    private TextField messageTF;
+    private TextField msgTXF;
     @FXML
-    private Button sendButton;
+    private Button btnSend;
 
     @FXML
-    private void sendMessage(KeyEvent event) {
+    private void sendMSGKey(KeyEvent event) {
     }
 
     @FXML
-    private void sendMs(ActionEvent event) {
+    private void sendMSGbtn(ActionEvent event) {
     }
 }
