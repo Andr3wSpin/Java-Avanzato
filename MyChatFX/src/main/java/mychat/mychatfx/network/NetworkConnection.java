@@ -13,7 +13,7 @@ public abstract class NetworkConnection {
     private Consumer<Serializable> receiveCallBack;
 
     public NetworkConnection(String IP, int port, Consumer<Serializable> receiveCallBack) {
-
+//gay
         this.IP = IP;
         this.port = port;
         this.receiveCallBack = receiveCallBack;
