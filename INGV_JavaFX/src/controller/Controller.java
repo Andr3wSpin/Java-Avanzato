@@ -21,8 +21,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -67,6 +69,8 @@ public class Controller implements Initializable {
     private CaricaReportService crs;
     @FXML
     private ProgressBar caricamentoDati;
+    @FXML
+    private Label percentuale;
     
     
     @Override
@@ -109,7 +113,7 @@ public class Controller implements Initializable {
         crs.setDataInizio(di);
         crs.setDataFine(df);
         crs.setLimitEvent(limiteEventi);
-        
+     
         caricamentoDati.setVisible(true);
         caricamentoDati.progressProperty().bind(crs.progressProperty());
         
