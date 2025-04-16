@@ -1,4 +1,4 @@
-package mychat.mychatfx;
+package mychat.mychatfx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

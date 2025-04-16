@@ -7,6 +7,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<<<<<<< HEAD
+=======
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="mychat.mychatfx.controller.MenuChatController"
+            prefHeight="400.0" prefWidth="600.0">
+>>>>>>> 9574e7570b0f5e16725ff7fe423b0f7c65ae8c8c
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mychat.mychatfx.MenuChatController">
    <children>

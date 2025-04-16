@@ -1,4 +1,4 @@
-package mychat.mychatfx;
+package mychat.mychatfx.controller;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ public class MenuPrincipaleController {
     private Button noBtn;
 
     private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+        //App.setRoot("secondary");
     }
 
     @FXML

@@ -9,6 +9,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +22,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -57,7 +61,12 @@ public class Controller implements Initializable {
     private ContextMenu contextMenu;
     @FXML
     private MenuItem esportaBtn;
+    @FXML
+    private ProgressBar caricamentoDati;
+    @FXML
+    private Label percentuale;
     
+    private ProgressIndicator pi;
     private ObservableList obList;
     private FilteredList<INGEvent> fList;
     private Alert alert;
@@ -66,14 +75,17 @@ public class Controller implements Initializable {
     private CaricaReportService crs;
     
     
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
+        pi = new ProgressIndicator();
         
         this.url = "https://webservices.ingv.it/fdsnws/event/1/query?starttime=2020-11-18T00%3A00%3A00&endtime=" +
                 "2020-11-25T23%3A59%3A59&minmag=2&maxmag=10&mindepth=-10&maxdepth=1000&minlat=-90&maxlat=" +
                      "90&minlon=-180&maxlon=180&minversion=100&orderby=time-asc&format=text&limit=10000";
         
-        crs = new CaricaReportService(this.url);
+     //   crs = new CaricaReportService(this.url);
 
         obList = FXCollections.observableArrayList();
         fList = new FilteredList (obList,b -> true);
@@ -82,12 +94,16 @@ public class Controller implements Initializable {
         
         inizializzaLimiteTxf();
         inizializzaTabella();
-        inizializzaSearchBar(); 
+        inizializzaSearchBar();
+        Platform.runLater(() -> caricaBtn.requestFocus());
+       
     }
 
     @FXML
     private void caricaDati(ActionEvent event) {
 
+          crs = new CaricaReportService(this.url);
+           inizializzaCaricamento();
         LocalDate di = dataInizio.getValue();
         LocalDate df = dataFine.getValue();
         
@@ -113,6 +129,8 @@ public class Controller implements Initializable {
             obList.setAll(eventi);
             
             eventTable.setItems(fList);
+            
+            pi.setVisible(false);
             
             crs.reset();
         });
@@ -204,5 +222,22 @@ public class Controller implements Initializable {
             return false;
           });
         }); 
+    }
+
+    private void inizializzaCaricamento() {
+        
+        pi.progressProperty().bind(crs.progressProperty());
+        
+        caricamentoDati.visibleProperty().bind(pi.progressProperty().greaterThan(0.0));
+        caricamentoDati.progressProperty().bind(pi.progressProperty());
+        
+        percentuale.visibleProperty().bind(pi.progressProperty().greaterThan(0.0));
+        percentuale.textProperty().bind(
+    Bindings.createStringBinding(
+        () -> "Caricamento  " + (int)(pi.getProgress() * 100) + "%",
+        pi.progressProperty()
+    )
+);
+ 
     }
 }
