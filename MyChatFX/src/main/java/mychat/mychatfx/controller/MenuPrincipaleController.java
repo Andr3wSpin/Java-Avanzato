@@ -42,9 +42,10 @@ public class MenuPrincipaleController implements Initializable {
     private Alert alert;
     private Scene scenaChat;
 
-    private String IP;
+    private String ip;
     private String port;
     private NetworkConnection user;
+    private int p;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -90,13 +91,13 @@ public class MenuPrincipaleController implements Initializable {
         ipLbl.visibleProperty().bind(clientBtn.selectedProperty());
     }
 
-    private boolean validIP(String IP) {
+    private boolean validIP(String ip) {
 
-        if(IP.isEmpty()) return false;
+        if(ip.isEmpty()) return false;
 
-        if(IP.startsWith("\\.") || IP.endsWith("\\.")) return false;
+        if(ip.startsWith(".") || ip.endsWith(".")) return false;
 
-        String[] campi = IP.split("\\.");
+        String[] campi = ip.split("\\.");
 
         if(campi.length != 4) return false;
 
@@ -108,9 +109,12 @@ public class MenuPrincipaleController implements Initializable {
 
         if(port.isEmpty()) return false;
 
-        int p = Integer.parseInt(port);
+        try {
 
-        return p >= 0 && p <= 65_535;
+            p = Integer.parseInt(port);
+
+            return p >= 0 && p <= 65_535;
+        } catch (NumberFormatException e) { return false; }
     }
 
     private boolean validServerInfo() {
@@ -119,8 +123,7 @@ public class MenuPrincipaleController implements Initializable {
 
         if(!validPort(port)) {
 
-            alert.setContentText("Porta non valida!");
-            alert.showAndWait();
+            mostraErrore("Porta non valida!");
 
             return false;
         }
@@ -130,12 +133,11 @@ public class MenuPrincipaleController implements Initializable {
 
     private boolean validClientInfo() {
 
-        IP = ipTf.getText();
+        ip = ipTf.getText();
 
-        if(!validIP(IP)) {
+        if(!validIP(ip)) {
 
-            alert.setContentText("IP non valido!");
-            alert.showAndWait();
+            mostraErrore("IP non valido!");;
 
             return false;
         }
@@ -163,11 +165,26 @@ public class MenuPrincipaleController implements Initializable {
 
         } catch(IOException e) {
 
-            alert.setContentText("Errore durante il cambio schermata!");
-            alert.showAndWait();
+            mostraErrore("Errore durante il cambio schermata!");
 
             return null;
         }
+    }
+
+    private void creaConnessione(MenuChatController controller) {
+
+        if(serverBtn.isSelected()) user = new Server(p, msg -> controller.setMessage(msg));
+        else user = new Client(ip, p, msg -> controller.setMessage(msg));
+
+        user.connect();
+
+        controller.setUser(user);
+    }
+
+    private void mostraErrore(String msg) {
+
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
     @FXML
@@ -175,8 +192,7 @@ public class MenuPrincipaleController implements Initializable {
 
         if(!serverBtn.isSelected() && !clientBtn.isSelected()) {
 
-            alert.setContentText("Selezionare una tra le due opzioni \"Server\" o \"Client\"!");
-            alert.showAndWait();
+            mostraErrore("Selezionare una tra le due opzioni \"Server\" o \"Client\"!");;
 
             event.consume();
 
@@ -192,16 +208,20 @@ public class MenuPrincipaleController implements Initializable {
             return;
         }
 
-        int p = Integer.parseInt(port);
-
         MenuChatController controller = getController();
 
-        if(serverBtn.isSelected()) user = new Server(p, msg -> controller.setMessage(msg));
-        else user = new Client(IP, p, msg -> controller.setMessage(msg));
+        if(controller == null) {
 
-        controller.setUser(user);
+            event.consume();
+
+            return;
+        }
+
+        creaConnessione(controller);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setOnCloseRequest(e -> user.disconnect());
 
         cambiaSchermata(stage);
     }
