@@ -9,9 +9,9 @@
    <children>
       <Label fx:id="label" layoutX="140.0" layoutY="119.0" text="Connettiti come:" />
       <Label fx:id="ipLbl" layoutX="140.0" layoutY="207.0" text="Indirizzo IP:" />
-      <Label fx:id="portaLbl" layoutX="176.0" layoutY="283.0" text="Porta:" />
+      <Label fx:id="portLbl" layoutX="176.0" layoutY="283.0" text="Porta:" />
       <TextField fx:id="ipTf" layoutX="233.0" layoutY="202.0" />
-      <TextField fx:id="portaTf" layoutX="233.0" layoutY="278.0" />
+      <TextField fx:id="portTf" layoutX="233.0" layoutY="278.0" />
       <HBox layoutX="274.0" layoutY="118.0" prefHeight="21.0" prefWidth="200.0">
          <children>
             <RadioButton fx:id="serverBtn" mnemonicParsing="false" text="Server">
@@ -25,5 +25,6 @@
             <RadioButton fx:id="clientBtn" mnemonicParsing="false" text="Client" toggleGroup="$mode" />
          </children>
       </HBox>
+      <Button fx:id="startBtn" layoutX="294.0" layoutY="339.0" mnemonicParsing="false" onAction="#avviaChat" text="Avvia chat" />
    </children>
 </AnchorPane>

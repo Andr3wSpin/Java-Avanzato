@@ -13,7 +13,7 @@ public abstract class NetworkConnection {
     private Consumer<Serializable> receiveCallBack;
 
     public NetworkConnection(String IP, int port, Consumer<Serializable> receiveCallBack) {
-//gay
+
         this.IP = IP;
         this.port = port;
         this.receiveCallBack = receiveCallBack;
@@ -24,7 +24,7 @@ public abstract class NetworkConnection {
 
     public void sendMsg(Serializable msg) {
 
-        //accedere ad output stream per scrievre il messaggio
+        //accedere ad output stream per scrivere il messaggio
         try {
 
             connectionThread.oos.writeObject(msg);
