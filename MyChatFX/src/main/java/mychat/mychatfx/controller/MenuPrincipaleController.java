@@ -1,7 +1,9 @@
 package mychat.mychatfx.controller;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -56,7 +58,9 @@ public class MenuPrincipaleController implements Initializable {
         inizializzaTextField();
         inizializzaLabel();
     }
-
+    
+    
+    
     private void inizializzaRadioButton() {
 
         serverBtn.setToggleGroup(mode);
@@ -67,7 +71,7 @@ public class MenuPrincipaleController implements Initializable {
 
         //campo IP visibile solo se viene scelta l'opzione Client
         ipTf.visibleProperty().bind(clientBtn.selectedProperty());
-
+        ipTf.setText(getIP());
         //campo IP accetta solo cifre e "."
         ipTf.setTextFormatter(new TextFormatter<>(change -> {
 
@@ -104,7 +108,17 @@ public class MenuPrincipaleController implements Initializable {
         return Arrays.stream(campi).mapToInt(Integer::parseInt)
                 .noneMatch(o -> o < 0 || o > 255);
     }
-
+    private String getIP(){
+       
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            return localHost.getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     private boolean validPort(String port) {
 
         if(port.isEmpty()) return false;
@@ -174,7 +188,7 @@ public class MenuPrincipaleController implements Initializable {
     private void creaConnessione(MenuChatController controller) {
 
         if(serverBtn.isSelected()) user = new Server(p, msg -> controller.setMessage(msg));
-        else user = new Client(ip, p, msg -> controller.setMessage(msg));
+        else user = new Client(getIP(), p, msg -> controller.setMessage(msg));
 
         user.connect();
 
