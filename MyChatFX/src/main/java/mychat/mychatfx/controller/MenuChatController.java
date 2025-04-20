@@ -18,41 +18,39 @@ public class MenuChatController {
     private TextField msgTXF;
     @FXML
     private Button btnSend;
-
     
-    NetworkConnection user;
+    private NetworkConnection user;
     
     public void setUser(NetworkConnection user){
-        this.user=user;
+        this.user = user;
     }
     
-    public void setMessage(Serializable msg){
-        showMessage("received: "+msg.toString());
-    }
+    public void setMessage(Serializable msg){ showMessage("received: " + msg.toString()); }
     
     private void showMessage(String msg){
-        textArea.appendText(msg+"\n");
+        textArea.appendText(msg + "\n");
     }
     
     
 @FXML
 private void sendMsg(KeyEvent event) {
     if (event.getCode() == KeyCode.ENTER) {
+
         String msg = msgTXF.getText().trim();
-        if(!msg.isEmpty()){
-            user.sendMsg(msg);
-            showMessage("sent: "+msg);
-            msgTXF.clear();
-        }
-        else
-        {
-            return;
-        }
+
+        if(msg.isEmpty()) return;
+
+        user.sendMsg(msg);
+        showMessage("sent: "+msg);
+        msgTXF.clear();
+
     }
 }
     @FXML
     private void sendMSGBTN(ActionEvent event) {
-                String msg = msgTXF.getText().trim();
+
+        String msg = msgTXF.getText().trim();
+
         if(!msg.isEmpty()){
             user.sendMsg(msg);
             showMessage("sent: "+msg);
@@ -63,11 +61,5 @@ private void sendMsg(KeyEvent event) {
             return;
         }
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
