@@ -103,8 +103,21 @@ public class MenuPrincipaleController implements Initializable {
 
         if(campi.length != 4) return false;
 
-        return Arrays.stream(campi).mapToInt(Integer::parseInt)
-                .noneMatch(o -> o < 0 || o > 255);
+        for(String campo : campi) {
+
+            if(campo.isEmpty()) return false;
+
+            try {
+
+                int c = Integer.parseInt(campo);
+
+                if((c < 0) || (c > 255)) return false;
+            } catch (NumberFormatException e) { return false; }
+        }
+//        return Arrays.stream(campi).mapToInt(Integer::parseInt)
+//                .noneMatch(o -> o < 0 || o > 255);
+
+        return true;
     }
     
     private boolean validPort(String port) {
