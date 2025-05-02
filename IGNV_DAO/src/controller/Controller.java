@@ -104,8 +104,8 @@ public class Controller implements Initializable {
     @FXML
     private void caricaDati(ActionEvent event) {
 
-          crs = new CaricaReportService(this.url);
-           inizializzaCaricamento();
+        crs = new CaricaReportService(this.url);
+        inizializzaCaricamento();
         LocalDate di = dataInizio.getValue();
         LocalDate df = dataFine.getValue();
         
