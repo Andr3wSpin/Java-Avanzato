@@ -10,6 +10,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -79,28 +81,40 @@ public class Controller implements Initializable {
     
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-       
-        pi = new ProgressIndicator();
-        
-        this.url = "https://webservices.ingv.it/fdsnws/event/1/query?starttime=2020-11-18T00%3A00%3A00&endtime=" +
-                "2020-11-25T23%3A59%3A59&minmag=2&maxmag=10&mindepth=-10&maxdepth=1000&minlat=-90&maxlat=" +
-                     "90&minlon=-180&maxlon=180&minversion=100&orderby=time-asc&format=text&limit=10000";
-        
-     //   crs = new CaricaReportService(this.url);
-
-        obList = FXCollections.observableArrayList();
-        fList = new FilteredList (obList,b -> true);
-        
-        alert = new Alert(Alert.AlertType.ERROR);
-        
-        inizializzaLimiteTxf();
-        inizializzaTabella();
-        inizializzaSearchBar();
-        Platform.runLater(() -> caricaBtn.requestFocus());
-       
+    public void initialize(URL url, ResourceBundle rb) { 
+            pi = new ProgressIndicator();            
+            this.url = "https://webservices.ingv.it/fdsnws/event/1/query?starttime=2020-11-18T00%3A00%3A00&endtime=" +
+                    "2020-11-25T23%3A59%3A59&minmag=2&maxmag=10&mindepth=-10&maxdepth=1000&minlat=-90&maxlat=" +
+                    "90&minlon=-180&maxlon=180&minversion=100&orderby=time-asc&format=text&limit=10000";
+            
+            //   crs = new CaricaReportService(this.url);
+            
+            obList = FXCollections.observableArrayList();
+            fList = new FilteredList (obList,b -> true);
+            
+            alert = new Alert(Alert.AlertType.ERROR);
+            
+            inizializzaLimiteTxf();
+            inizializzaTabella();
+            inizializzaSearchBar();
+            Platform.runLater(() -> caricaBtn.requestFocus());
+            
+            mostraDatiDB();
     }
-
+ //carica nella obList i dati presenti nel DB
+    private void mostraDatiDB(){
+        try {
+            obList.setAll(ingPostGres.elencaTutti());
+            eventTable.setItems(fList);
+            
+            pi.setVisible(false);
+            
+            crs.reset();
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @FXML
     private void caricaDati(ActionEvent event) {
 
@@ -134,13 +148,7 @@ public class Controller implements Initializable {
             catch(Exception ex){
                 System.out.println(ex.getMessage());
             }
-            obList.setAll(eventi);
-            
-            eventTable.setItems(fList);
-            
-            pi.setVisible(false);
-            
-            crs.reset();
+            mostraDatiDB();
         });
 
         crs.setOnFailed(e -> {

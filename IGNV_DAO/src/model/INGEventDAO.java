@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package model;
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -14,9 +14,7 @@ public interface INGEventDAO {
         
     public void carica(List <INGEvent> eventi) throws Exception;
     
-    public void aggiorna(INGEvent i) throws Exception;
+    public List<INGEvent> filtra (LocalDateTime data1,LocalDateTime data2) throws Exception;
     
-    public INGEvent cerca(String matricola) throws Exception;
-    
-    public List<INGEvent > elencaTutti() throws Exception;
+    public List<INGEvent> elencaTutti() throws Exception;
 }

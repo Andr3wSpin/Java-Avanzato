@@ -36,5 +36,11 @@
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Label>
+      <SplitMenuButton layoutX="436.0" layoutY="466.0" mnemonicParsing="false">
+        <items>
+          <MenuItem id="DBButton" mnemonicParsing="false" text="DataBase" />
+          <MenuItem id="WebButton" mnemonicParsing="false" text="WebService" />
+        </items>
+      </SplitMenuButton>
     </children>
 </AnchorPane>
