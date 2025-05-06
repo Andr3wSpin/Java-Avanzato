@@ -3,7 +3,6 @@ package model;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +16,6 @@ import javafx.concurrent.Task;
 public class CaricaReportService extends Service<List<INGEvent>> {
 
     private String url;
-    private int limitEvent;
-    private LocalDate dataInizio;
-    private LocalDate dataFine;
 
     public CaricaReportService(String url) {
         this.url = url;
@@ -32,35 +28,12 @@ public class CaricaReportService extends Service<List<INGEvent>> {
     public void setUrl(String url) {
         this.url = url;
     }
-
-    public int getLimitEvent() {
-        return limitEvent;
-    }
-
-    public void setLimitEvent(int limitEvent) {
-        this.limitEvent = limitEvent;
-    }
-
-    public LocalDate getDataInizio() {
-        return dataInizio;
-    }
-
-    public void setDataInizio(LocalDate dataInizio) {
-        this.dataInizio = dataInizio;
-    }
-
-    public LocalDate getDataFine() {
-        return dataFine;
-    }
-
-    public void setDataFine(LocalDate dataFine) {
-        this.dataFine = dataFine;
-    }
-    
+   
     @Override
     protected Task<List<INGEvent>> createTask() {
 
         return new Task<List<INGEvent>>() {
+            
             @Override
             protected List<INGEvent> call() throws Exception {
 
@@ -68,20 +41,19 @@ public class CaricaReportService extends Service<List<INGEvent>> {
                 
                 List<INGEvent> eventi;
                 
-          final  int[] i = {0};
+                final  int[] i = {0};
               
                 BufferedReader in = new BufferedReader(new InputStreamReader(u.openStream()));
-                  in.readLine();
-                  eventi = in.lines().map(f -> {
-                                    
-                 
-                                               i[0]++;
-                                             Platform.runLater(() -> updateProgress(i[0], 1));
-                                               INGEvent evento = creaEvento(f) ;
-                                               return evento;
-                                                                   }).filter(f-> 
-                          !f.getTime().toLocalDate().isAfter(dataFine) && !f.getTime().toLocalDate().isBefore(dataInizio))
-                          .limit(limitEvent).collect(Collectors.toList());
+                
+                in.readLine();
+                
+                eventi = in.lines().map(f -> {
+                    i[0]++;
+                    Platform.runLater(() -> updateProgress(i[0], 1));
+                    INGEvent evento = creaEvento(f) ;
+                    return evento;
+                }).collect(Collectors.toList());
+                
                 Platform.runLater(() -> updateProgress(1, 1));
             
                 return eventi;

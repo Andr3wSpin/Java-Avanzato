@@ -29,18 +29,13 @@
         <Label layoutX="44.0" layoutY="471.0" text="Data fine:" />
         <Label layoutX="436.0" layoutY="402.0" text="Limite risultati:" />
         <TextField fx:id="limiteTxf" layoutX="567.0" layoutY="397.0" promptText="1000" />
-        <Button fx:id="caricaBtn" layoutX="50.0" layoutY="541.0" mnemonicParsing="false" onAction="#caricaDati" text="Carica Dati" />
+        <Button fx:id="aggiornaBtn" layoutX="587.0" layoutY="554.0" mnemonicParsing="false" onAction="#aggiornaDB" text="Aggiorna Database" />
       <TextField fx:id="serchBar" alignment="CENTER" layoutX="553.0" layoutY="14.0" promptText="cerca evento" />
-      <ProgressBar fx:id="caricamentoDati" layoutX="543.0" layoutY="541.0" prefHeight="31.0" prefWidth="218.0" progress="0.0" visible="false" />
-      <Label fx:id="percentuale" layoutX="553.0" layoutY="544.0" prefHeight="25.0" prefWidth="198.0" textAlignment="CENTER" visible="false">
+      <ProgressBar fx:id="caricamentoDati" layoutX="538.0" layoutY="482.0" prefHeight="31.0" prefWidth="218.0" progress="0.0" visible="false" />
+      <Label fx:id="percentuale" layoutX="553.0" layoutY="485.0" prefHeight="25.0" prefWidth="198.0" textAlignment="CENTER" visible="false">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Label>
-      <SplitMenuButton layoutX="436.0" layoutY="466.0" mnemonicParsing="false">
-        <items>
-          <MenuItem id="DBButton" mnemonicParsing="false" text="DataBase" />
-          <MenuItem id="WebButton" mnemonicParsing="false" text="WebService" />
-        </items>
-      </SplitMenuButton>
+      <Button fx:id="mostraBtn" layoutX="49.0" layoutY="554.0" mnemonicParsing="false" onAction="#mostraEventi" text="Mostra eventi" />
     </children>
 </AnchorPane>

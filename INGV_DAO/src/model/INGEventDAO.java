@@ -14,7 +14,7 @@ public interface INGEventDAO {
         
     public void carica(List <INGEvent> eventi) throws Exception;
     
-    public List<INGEvent> filtra (LocalDateTime data1,LocalDateTime data2) throws Exception;
+    public List<INGEvent> filtra (LocalDateTime data1,LocalDateTime data2, int limite) throws Exception;
     
     public List<INGEvent> elencaTutti() throws Exception;
 }

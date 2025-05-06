@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -57,7 +59,9 @@ public class Controller implements Initializable {
     @FXML
     private TextField limiteTxf;
     @FXML
-    private Button caricaBtn;
+    private Button aggiornaBtn;
+    @FXML
+    private Button mostraBtn;
     @FXML
     private TextField serchBar;
     @FXML
@@ -79,7 +83,6 @@ public class Controller implements Initializable {
     
     private INGEventDAOPostGres ingPostGres  = new INGEventDAOPostGres();
     
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
             pi = new ProgressIndicator();            
@@ -97,7 +100,7 @@ public class Controller implements Initializable {
             inizializzaLimiteTxf();
             inizializzaTabella();
             inizializzaSearchBar();
-            Platform.runLater(() -> caricaBtn.requestFocus());
+            Platform.runLater(() -> aggiornaBtn.requestFocus());
             
             mostraDatiDB();
     }
@@ -108,18 +111,46 @@ public class Controller implements Initializable {
             eventTable.setItems(fList);
             
             pi.setVisible(false);
-            
-            crs.reset();
         } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
     
     @FXML
-    private void caricaDati(ActionEvent event) {
+    private void aggiornaDB(ActionEvent event) {
 
         crs = new CaricaReportService(this.url);
+        
         inizializzaCaricamento();
+        
+        crs.setOnSucceeded(e -> {
+            List<INGEvent> eventi = crs.getValue();
+            //passa a INGEventDAOPostGres la lista da aggiungere al DB
+            try{
+                ingPostGres.carica(eventi);
+            } catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
+            
+            mostraDatiDB();
+            
+            crs.reset();
+        });
+
+        crs.setOnFailed(e -> {
+            
+            alert.setContentText("Impossibile caricare i dati!");
+            alert.showAndWait();
+            
+            crs.reset();
+        });
+
+        crs.start();
+    }
+    
+    @FXML
+    private void mostraEventi(ActionEvent event) {
+        
         LocalDate di = dataInizio.getValue();
         LocalDate df = dataFine.getValue();
         
@@ -134,32 +165,16 @@ public class Controller implements Initializable {
         }  
         
         int limiteEventi = limiteTxf.getText().isEmpty() ? 1000 : Integer.parseInt(limiteTxf.getText());
-
-        crs.setDataInizio(di);
-        crs.setDataFine(df);
-        crs.setLimitEvent(limiteEventi);
         
-        crs.setOnSucceeded(e -> {
-            List<INGEvent> eventi = crs.getValue();
-            //passa a INGEventDAOPostGres la lista da aggiungere al DB
-            try{
-            ingPostGres.carica(eventi);
-            }
-            catch(Exception ex){
-                System.out.println(ex.getMessage());
-            }
-            mostraDatiDB();
-        });
-
-        crs.setOnFailed(e -> {
-            
-            alert.setContentText("Impossibile caricare i dati!");
-            alert.showAndWait();
-            
-            crs.reset();
-        });
-
-        crs.start();
+        LocalDateTime data1 = LocalDateTime.of(di, LocalTime.MIN);
+        LocalDateTime data2 = LocalDateTime.of(df, LocalTime.MAX);
+        
+        try{
+            obList.setAll(ingPostGres.filtra(data1, data2, limiteEventi));
+            fList.setAll(obList);
+        } catch(Exception ex){
+             System.out.println(ex.getMessage());
+        }
     }
     
      @FXML
@@ -177,7 +192,7 @@ public class Controller implements Initializable {
         
         try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file.getAbsolutePath())))) {
             
-            pw.append("Date|Magnitude|Location");
+            pw.append("Date|Magnitude|Location\n");
             
             for(INGEvent evento : export) {
                 
@@ -254,6 +269,5 @@ public class Controller implements Initializable {
         pi.progressProperty()
     )
 );
- 
     }
 }
